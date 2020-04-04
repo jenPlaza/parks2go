@@ -1,5 +1,6 @@
 // JavaScript Document
 import React from 'react';
+import Link from '@material-ui/core/Link';
 
 //Smart Component
 class Main extends React.Component {
@@ -15,32 +16,30 @@ class Main extends React.Component {
 
 //fetch Api data and map json results in a list format
 	fetchData(){
-				//let script = document.createElement('script');
-		//script.src = `http://www.recipepuppy.com/api/?callback=easyToDo`;
-		//document.body.append(script);
-		
-	fetch('https://joshbloom.github.io/dws1/data/hikersguide.json')
+
+	fetch('api')
 		.then(results =>{
 		return results.json();
 	}).then(data =>{
+		
 		let mList = data.results.map((use)=>{
 			return(
-				  <li key={this.props.id} style={styles.list}>
+				<li key={this.props.id}>
 				<span key={use.results}>
-				/*<img src={use.results.thumbnail}</img><br /><br />
-				<h3>{use. results.title}</h3><br />
-				<p><b>Ingredients:</b> {use.results.ingredients}</p><br/>*/
-				<p><b>Click for </b><a href='{use.posts.moreLink}'>recipe</a></p><br /><br />
+				<img src={use.thumbnail} alt={use.title} />
+				<h2>{use.title}</h2>
+				<p>Ingredients: {use.ingredients}</p>
+				<Link href='{use.href}'>{use.href}</Link><br /><br /><br />
 				</span>
 				</li>
 			)
 		})
-		this.setState({message:mList});
+		this.setState({main:mList});
 	})
 }
 	 render() { 
   return (
-		<div>{this.state.message}</div>			
+		<div>{this.state.main}</div>			
   	);
   }
 }

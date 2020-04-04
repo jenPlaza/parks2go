@@ -8,9 +8,13 @@ import Paper from "@material-ui/core/Paper";
 
 function App() {
   return (
+	  <Router>
     <div className="App">
+	  
 	  <Paper><Routes /></Paper>
+	  
     </div>
+	  </Router>
   );
 }
 
