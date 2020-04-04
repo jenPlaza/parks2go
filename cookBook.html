@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cook2Go</title>
+</head>
+
+<body>
+        <section id="meals">
+            <article>
+                <img src="/proteins2.png" alt="display of healthy ingrediants" />
+                <section>
+                    <h3>Fruits & Spices</h3>
+                    <p>Click for Recepe</p>
+                    <p><strong>ingrediants</strong></p>
+                </section>
+            </article>
+        </section>
+</body>
+	<script>
+		
+		let script = document.createElement('script');
+		script.src = `http://www.recipepuppy.com/api/?callback=easyToDo`;
+		document.body.append(script);
+
+function easyToDo(recipe) {
+
+    var food = '<section>';
+    for (var i = 3; i < recipe.results.length; i++) {
+        food += '<article>';
+        food += '<img src="' + recipe.results[i].thumbnail + '"';
+        food += 'alt="' + recipe.results[i].title + '"/>';
+        food += '<section>';
+        food += '<h3>' + recipe.results[i].title + '</h3>';
+        food += '<a>' + recipe.results[i].href + '</a>';
+        food += '<p><strong> Ingredients: ' + recipe.results[i].ingredients + '<br/ >';
+        food += '</section>';
+        food += '</article>';
+		food += '</section>';
+    }
+
+    var recipeMeals = document.getElementById("meals");
+    recipeMeals.innerHTML = food;
+}
+		
+	</script>
+</html>
