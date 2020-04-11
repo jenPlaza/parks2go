@@ -17,19 +17,29 @@ class Main extends React.Component {
 //fetch Api data and map json results in a list format
 	fetchData(){
 
-	fetch('api')
+	fetch('https://developer.nps.gov/api/v1/parks?parkCode=afam&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq')
 		.then(results =>{
 		return results.json();
 	}).then(data =>{
 		
-		let mList = data.results.map((use)=>{
+		let mList = data.data.map((use)=>{
 			return(
 				<li key={this.props.id}>
 				<span key={use.results}>
-				<img src={use.thumbnail} alt={use.title} />
-				<h2>{use.title}</h2>
-				<p>Ingredients: {use.ingredients}</p>
-				<Link href='{use.href}'>{use.href}</Link><br /><br /><br />
+				<img src={use.images[0].url} alt={use.images[0].altText} width="400" height="200"/>
+				<h2>{use.name}</h2>
+				<h6>{use.addresses[0].city}, {use.addresses[0].stateCode}</h6>
+
+				<p><b>Park Details</b><br />
+					    Cost:{use.entranceFees[0].cost},<br />
+					    Description: {use.entranceFees[0].description},<br />
+					    Title: {use.entranceFees[0].title}</p>
+				
+				<p><b>Park Description</b><br /> {use.description}</p>
+				<p><b>Park Activities</b><br /> {use.activities}</p>
+				<p><b>Park Info</b><br /> {use.directionsInfo}</p>
+				<Link href='{use.directionsUrl}'>{use.directionsUrl}</Link><br /><br /><br />
+
 				</span>
 				</li>
 			)
