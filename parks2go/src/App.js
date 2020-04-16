@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import './App.css';
 import Header from './components/header/Header';
-import SideBarLeft from './components/sidebarleft/SideBarLeft';
 import Routes from './components/Routes';
 import Footer from './components/footer/Footer';
 
@@ -11,7 +10,6 @@ import Footer from './components/footer/Footer';
 import{ BrowserRouter as Router }from 'react-router-dom'
 
 //Material UI
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 
@@ -54,8 +52,10 @@ const useStyles = makeStyles(theme => ({
 		marginTop:'6%',
 	},
 	footerRow:{
-		marginTop:'1%',
-		padding:'2%',
+		marginTop:'2%',
+		paddingTop:'5%',
+		paddingLeft:'5%',
+		paddingRight:'5%',
 		backgroundColor:'#313638',
 	},
 }));
@@ -65,23 +65,21 @@ export default function App() {
   return (
 	  <MuiThemeProvider theme={theme}>
 		<Router>
-		<div className={classes.root} style={styles.container}>
+		<div className={classes.root}>
       	<Grid container spacing={0} >
         <Grid item xs={12} className={classes.headerRow}>
-          <Paper className={classes.paper} variant="outlined"><Header /></Paper>
+          <Header />
         </Grid>
 	  
 		<Grid container spacing={1}>
-         <Grid item xs={12} md={6}>
-        <Paper className={classes.paper} variant="outlined"><SideBarLeft /></Paper>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Paper className={classes.paper} variant="outlined"><Routes /></Paper>
+
+        <Grid item xs={12}>
+          <Routes />
         </Grid>
 		</Grid>
 	  
-	  <Grid item xs={12} className={classes.footerRow} style={styles.footer}>
-          <Paper className={classes.paper} variant="outlined"><Footer /></Paper>
+	  <Grid item xs={12} className={classes.footerRow}>
+          <Footer />
         </Grid>
       </Grid>
     </div>
@@ -89,8 +87,3 @@ export default function App() {
 	   </MuiThemeProvider>
 		);
 	}
-const styles ={
-	footer:{
-		border: '1px solid red',						
-	}
-}

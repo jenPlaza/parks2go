@@ -22,28 +22,26 @@ const useStyles = makeStyles(theme => ({
 		overflow:'hidden',
 		textAlign:'left',
 	},
-	paper:{
-	backgroundColor:'white',
-		border:'none',
-	},	
 	h2:{
 		fontSize:'1.25em',
 		textAlign:'center',
 		marginTop:'-0.5%',
-	},
-	logo2:{
-		width:'75%',
-		marginLeft:'-15%',
-    [theme.breakpoints.up('lg')]: {
-     width:'35%',
-    },
+		color:'white',
 	},
 	a:{
-		color:'grey',
+		color:'white',
 		textDecoration:'none',
 	},
-	copy:{
-		marginBottom:'2%',
+	p2g:{
+		color:'#ea7a0f',
+		textDecoration:'none',
+	},
+	states:{
+	fontSize:'1.25em',
+		textAlign:'center',
+		marginTop:'-0.5%',
+		color:'white',
+	marginLeft:'-14%',	
 	},
 	typography:{
 		color:theme.palette.secondary.main,
@@ -74,15 +72,15 @@ export default function Footer() {
 
 	  <Grid item xs={12} md={3} style={styles.about}>
 		<h2 className={classes.h2}>About Us</h2>
-					<p><a className={classes.a} href='https://reactjs.org'>Parks2Go</a> ipsum dolor sit amet. The hotel, the casino. The Corleone Family wants to buy you out. I don’t like violence, Tom. I’m a businessman; blood is a big expense.</p>
+					<p><a className={classes.p2g} href='http://localhost:3000/About'>Parks2Go</a> ipsum dolor sit amet. The hotel, the casino. The Corleone Family wants to buy you out. I don’t like violence, Tom. I’m a businessman; blood is a big expense.</p>
         </Grid>
 	  
 	  
         <Grid item xs={12} md={8}>
-		<h2 className={classes.h2}>Parks2Go</h2>
+		<h2 className={classes.states}>Parks2Go</h2>
      
       <Grid container style={styles.container}>
-      <Grid item xs={2} style={styles.box}>
+      <Grid item xs={2}>
 	  <h5><a className={classes.a} href='https://reactjs.org'>Alabama</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Conneticut</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Illinois</a><br />
@@ -94,7 +92,7 @@ export default function Footer() {
 	  <a className={classes.a} href='https://reactjs.org'>Wisconsin</a></h5>
       </Grid>
 	  
-	  <Grid item xs={2} style={styles.box2}>
+	  <Grid item xs={2} style={styles.column2}>
 	  <h5><a className={classes.a} href='https://reactjs.org'>Alaska</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Delaware</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Indiana</a><br />
@@ -106,7 +104,7 @@ export default function Footer() {
 	  <a className={classes.a} href='https://reactjs.org'>Wyoming</a></h5>
       </Grid>
 	  
-	   <Grid item xs={2} style={styles.box3}>
+	   <Grid item xs={2} style={styles.column3}>
 	   <h5><a className={classes.a} href='https://reactjs.org'>Arizona</a><br />
 	   <a className={classes.a} href='https://reactjs.org'>District of Columbia</a><br />
 	   <a className={classes.a} href='https://reactjs.org'>Florida</a><br />
@@ -118,7 +116,7 @@ export default function Footer() {
 	   <a className={classes.a} href='https://reactjs.org'>Vermont</a></h5>
        </Grid>
 	  
-	   <Grid item xs={2} style={styles.box4}>
+	   <Grid item xs={2} style={styles.column4}>
 	  <h5><a className={classes.a} href='https://reactjs.org'>Arkansas</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Georgia</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Kansas</a><br />
@@ -129,7 +127,7 @@ export default function Footer() {
 	  <a className={classes.a} href='https://reactjs.org'>Virginia</a></h5>
       </Grid>
 	  
-	  <Grid item xs={2} style={styles.box5}>
+	  <Grid item xs={2} style={styles.column5}>
 	  <h5><a className={classes.a} href='https://reactjs.org'>California</a><br /><a className={classes.a} href='https://reactjs.org'>Hawaii</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Kentucky</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Minnesota</a><br />
@@ -139,7 +137,7 @@ export default function Footer() {
 	  <a className={classes.a} href='https://reactjs.org'>Washington</a></h5>
        </Grid>
 	  
-	  <Grid item xs={2} style={styles.box6}>
+	  <Grid item xs={2} style={styles.column6}>
 	  <h5><a className={classes.a} href='https://reactjs.org'>Colorado</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Idaho</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Louisiana</a><br />
@@ -152,12 +150,12 @@ export default function Footer() {
      </Grid>
    </Grid>
 
-      <Grid item xs={12} md={1} style={styles.connect}>
+      <Grid item xs={12} md={1}>
 	  <h2 className={classes.h2}>Connect</h2>
 	  <Facebook style={styles.display}/>
 	  <Instagram style={styles.display}/>
 	  <Twitter style={styles.display}/>
-	  <Youtube style={styles.display}/>
+	  <Youtube style={styles.display} />
       </Grid>
 	    
 		<Grid item xs={12} md={12}><Copyright /></Grid>
@@ -168,43 +166,31 @@ export default function Footer() {
 
 const styles ={
 	container:{
-		 border: '1px solid #ddd',	
-		marginTop:'-3%',
-		marginLeft:'2%'
+		marginTop:'-2%',
+		justifyContent:'center',
 	},
 	about:{
-		 border: '1px solid yellow',
 		paddingRight:'4%',
+		color:'white',
 	},
-	box:{
-		 border: '1px solid red',			
+	column2:{
+		marginLeft:'-5%'
 	},
-	box2:{
-		 border: '1px solid red',
+	column3:{
+		marginLeft:'-4%'
+	},
+	column4:{
+		marginLeft:'1%'
+	},
+	column5:{
 		marginLeft:'-3%'
 	},
-	box3:{
-		 border: '1px solid red',
-		marginLeft:'-3%'
-	},
-	box4:{
-		 border: '1px solid red',
-		marginLeft:'3%'
-	},
-	box5:{
-		 border: '1px solid red',
-		marginLeft:'-1%'
-	},
-	box6:{
-		 border: '1px solid red',
-		marginLeft:'0%'
-	},
-connect:{
-		 border: '1px solid pink',	
+	column6:{
+		marginLeft:'-2%'
 	},
 	display:{
 		display:'block',
 		paddingLeft:'35%',
-	
+	color:'white',
 	}
 }
