@@ -59,10 +59,8 @@ export default function Footer() {
         <Parks />
         </Grid>
 	  <Grid item xs={12} md={6}style={styles.map}>
-
-	  </Grid>
-	  
-      <Grid item xs={2} style={styles.box}>
+	  <Grid container style={styles.container}>
+      <Grid item xs={2}  style={styles.box}>
 	  <h5><a className={classes.a} href='https://reactjs.org'>Alabama</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Conneticut</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>Illinois</a><br />
@@ -129,7 +127,8 @@ export default function Footer() {
 	  <a className={classes.a} href='https://reactjs.org'>Tennessee</a><br />
 	  <a className={classes.a} href='https://reactjs.org'>West Virginia</a></h5>
        </Grid>
-
+</Grid>
+	  </Grid>
       </Grid>
     </div>
   );

@@ -1,6 +1,6 @@
 // JavaScript Document
 import React from 'react';
-
+import Modal from '../components/modal/Modal';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,13 +31,34 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
+
 //exporting class About
-export default function About() {
-  const classes = useStyles();
+class About extends React.Component {
+	constructor() {
+        super();
+
+        this.state = {
+            isShowing: false
+        }
+    }
+
+    openModalHandler = () => {
+        this.setState({
+            isShowing: true
+        });
+    }
+
+    closeModalHandler = () => {
+        this.setState({
+            isShowing: false
+        });
+    }
+render() { 	
+
   return (
-		<div>
-			<Grid container>
-				<Grid item xs={12} style={styles.container} className={classes.about}>
+		 <div>
+		<Grid container>
+				<Grid item xs={12} style={styles.container} >
 					<section>
 	  					<h1>About Us</h1>
 	  					<p>
@@ -50,10 +71,9 @@ export default function About() {
 	  				</section>
 				</Grid>
 	  
-				<Grid item xs={12} className={classes.contact}>
+				<Grid item xs={12} style={styles.contact}>
 					<section>
 	  					<Grid container>
-	  
 							<Grid item xs={12} md={3}>
 	  							<h2>1-512-394-9384</h2>
 	  								<p>Monday - Friday<br />
@@ -61,34 +81,94 @@ export default function About() {
 	  								</p>
 	  						</Grid>
 	  
-	  						<Grid item xs={12} md={7} className={classes.address}>
+	  						<Grid item xs={12} md={7} style={styles.address}>
 	   							<h3>Parks2Go, Inc </h3>
 	  								<address>
-	  7256 Arugula Parkway, ste 101<br />
-	  The Woodlands, TX 77380<br />
-	  1-512-394-9384
+	  								7256 Arugula Parkway, ste 101<br />
+	  								The Woodlands, TX 77380<br />
+	  								1-512-394-9384
 	  								</address>
 	  						</Grid>
 	  
-	  						<Grid item xs={12} md={2} className={classes.sendUs}>
-	   							<Typography variant="body2" align="left">
-      								<Link color="inherit" href="/"><h3>
-	  									SEND US AN EMAIL
-      								</h3></Link>{' '}
-    							</Typography>
-	  
+	  						<Grid item xs={12} md={2} style={styles.sendUs}>
+                				{ this.state.isShowing ? <div onClick={this.closeModalHandler} style={styles.backDrop} ></div> : null }
+
+                				<button style={styles.openModalBtn} onClick={this.openModalHandler}>SEND US AN EMAIL</button>
 	  					    </Grid>
+	  
+	  						<Grid item xs={12}>
+	    						<Modal show={this.state.isShowing} close={this.closeModalHandler}>
+                        			<form method="post">
+	  									<Grid container>
+											<Grid item xs={12}>
+  												<input type="text" id="fname" name="fname" placeholder="Full Name"></input><br /><br />
+ 											</Grid>
+	  										<Grid item xs={12}>
+  												<input type="text" id="email" name="email" placeholder="Email"></input><br /><br />
+	  										</Grid>
+	  										<Grid item xs={12}>
+	  											<input type="text" id="message" name="message" placeholder="Message"></input><br /><br />
+  											</Grid>
+	  										<Grid item xs={12}>
+	  											<input type="submit" style={styles.btnSubmit}value="SUBMIT"></input>
+	  										</Grid>
+	  									</Grid>
+	  								</form>
+                				</Modal>
+	  						</Grid>
 	  					</Grid>
 	  			   </section>
 				</Grid>
-
 			</Grid>
 		</div>
+	  
     );
 }
+}
+export default About
 const styles ={
 	container:{
 		backgroundImage: 'url(' + imgUrl + ')',	
 		backgroundColor:'rgba(24, 8, 0, 1)',
-	}
+		padding:'6%',
+	  color:'white',
+	},
+	about:{
+	  padding:'6%',
+	  color:'white',
+	},
+	contact:{
+	  padding:'2%',
+	  color:'#280004',
+		textAlign:'center',
+		height:'200px',
+	},
+	address:{
+	  textAlign:'center',
+	},
+	sendUs:{
+		paddingLeft:'3%',
+	},
+
+	btnSubmit:{
+    background: 'coral',
+    border: 'none',
+    color: 'white',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    outline: 'none',
+    padding: '10px',
+	backgroundColor: '#1b5e20',
+    marginLeft:'5%',
+	marginBottom:'1%',
+		position:'absolute',
+		bottom:'0px',
+},
+openModalBtn:{
+    margin: '15px',
+    padding: '10px',
+    fontWeight: 'bold',
+},
 }
+
+

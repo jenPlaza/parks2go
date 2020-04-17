@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import ReactModal from 'react-modal';
 
 import './App.css';
 import Header from './components/header/Header';
@@ -56,6 +57,8 @@ const useStyles = makeStyles(theme => ({
 		paddingTop:'5%',
 		paddingLeft:'5%',
 		paddingRight:'5%',
+		//backgroundColor:'#001900',
+		//backgroundColor:'#002000',
 		backgroundColor:'#313638',
 	},
 }));
