@@ -46,10 +46,11 @@ class Parks extends React.Component {
 		return results.json();
 	}).then(data =>{
 		
-		let mList = data.data.map((use)=>{
+		let mList = data.data.map((use, i)=>{
 			return(
 				
-			  <li key={this.props.id}>
+			  <li key={i}>
+				
 				<span key={use.results}>  
      <Typography variant="body" align="left">
       	<Link color="inherit" href="/">

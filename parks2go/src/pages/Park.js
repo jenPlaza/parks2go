@@ -98,7 +98,7 @@ fetchData(){
 					  <img src={img} alt='park image' style={{width: 130, height: 130, borderRadius: 130/ 2, padding: '1%'}}/>
 	   			</Grid>
 				<Grid item xs={12} style={styles.activities}>
-		  <p><b>Park Activities</b></p>
+		  <h2>Park Activities</h2>
 
 					<ul>
 						<li>Astronomy</li>
@@ -120,7 +120,7 @@ fetchData(){
 
 	   			</Grid> 
 	 			<Grid item xs={12} style={styles.topics}>
-		  				<p><b>Park Topics</b><br /></p>
+		  				<h2>Park Topics</h2>
 	<ul>
 						<li>Astronomy</li>
 						<li>Birdwatching</li>
@@ -132,19 +132,19 @@ fetchData(){
 	 	<Grid item xs={12} md={4}style={styles.rightCol}>
 		  	<Grid container>
 	  			<Grid item xs={12} style={styles.h2}>
-		  			<h2>Park</h2>
+		  			<h1>Park</h1>
 	   			</Grid> 
 	 			<Grid item xs={12} style={styles.details}>
-		  			<p><b>Park Details</b><br />
-					    Cost:XXXXXXX,<br />
-					    Description: Chicory flavour mocha cultivar sugar doppio breve body americano macchiato. Wings caramelization, beans grinder aftertaste irish con panna milk café au lait spoon acerbic. Redeye café au lait body aftertaste milk fair trade mocha robust.,<br />
-					    Title: Title</p>
+		  			<h2>Park Details</h2>
+					    <p><b>Cost:</b>XXXXXXX,</p><br />
+					    <p><b>Description:</b> Chicory flavour mocha cultivar sugar doppio breve body americano macchiato. Wings caramelization, beans grinder aftertaste irish con panna milk café au lait spoon acerbic. Redeye café au lait body aftertaste milk fair trade mocha robust.,</p><br />
+					    <p><b>Title:</b> Title</p>
 	   			</Grid>
 				<Grid item xs={12} style={styles.description}>
-		  				<p><b>Park Description</b><br /> Aromatic galão aroma milk aged, single shot, crema whipped spoon, grinder sweet single shot breve trifecta, mazagran fair trade, cappuccino foam breve crema seasonal americano. Decaffeinated kopi-luwak milk trifecta con panna americano, filter that, flavour that sweet roast trifecta arabica. Foam, java brewed, whipped strong skinny, pumpkin spice, froth, chicory filter caramelization extra, decaffeinated qui, strong dripper acerbic, medium pumpkin spice shop sweet aromatic. </p>
+		  				<h2>Park Description</h2><br /><p> Aromatic galão aroma milk aged, single shot, crema whipped spoon, grinder sweet single shot breve trifecta, mazagran fair trade, cappuccino foam breve crema seasonal americano. Decaffeinated kopi-luwak milk trifecta con panna americano, filter that, flavour that sweet roast trifecta arabica. Foam, java brewed, whipped strong skinny, pumpkin spice, froth, chicory filter caramelization extra, decaffeinated qui, strong dripper acerbic, medium pumpkin spice shop sweet aromatic. </p>
 	   			</Grid> 
 	 			<Grid item xs={12} style={styles.directions}>
-		  				<a>Directions</a>
+		  				<h1><a>Directions</a></h1>
 	   			</Grid>
 				<Grid item xs={12} style={styles.buttons}>
 		  				<button >Print</button>
@@ -169,13 +169,17 @@ const styles ={
 	},
 	images:{
 backgroundColor:'#313638',
+		 borderBottomRightRadius: 15,
+    borderTopRightRadius: 15,
+		border:'0.5px solid grey'
 		
 	},
 	moreImages:{
 backgroundColor:'#313638',
 		padding:'2%',
-		borderTopRightRadius:'50',
-		borderBottomRightRadius:'50',
+		 borderBottomRightRadius: 15,
+    borderTopRightRadius: 15,
+		border:'0.5px solid grey'
 	},
 rightCol:{
 	color:'white',
