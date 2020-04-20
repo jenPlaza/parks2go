@@ -19,7 +19,11 @@ export default function Routes() {
 					<Route exact path='/About' component={About} />
 	  				<Route exact path='/Parks' component={Parks} />
 	  				<Route exact path='/Park' component={Park} />
-	  				<Route exact path='/stateParks' component={StateParks} />
+						<Route exact path='/stateParks' component={StateParks} />
+						{ /*
+							SB Added this as a "route param" demo
+							<Route exact path='/stateParks/:stateCode' component={StateParks} />
+						*/}
 	  				<Route exact path='/stateActivities' component={StateActivities} />
 				</Switch>
 			</div>

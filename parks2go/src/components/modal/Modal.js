@@ -10,9 +10,7 @@ const modal = (props) => {
                     <span style={styles.closeBtn} onClick={props.close}>×</span>
                 </div>
                 <div style={styles.modalBody}>
-                    <p>
                         {props.children}
-                    </p>
                 </div>
                 <div style={styles.modalFooter}>
                     <button style={styles.btnCancel} onClick={props.close}>Cancel</button>

@@ -23,6 +23,9 @@ class StateParks extends React.Component {
  fetchParks(){
 	 
 	//state= x;
+
+	// SB: This is how you would access the state code passed in via route params
+	// console.log(this.props.match.params.stateCode)
 	 
 	fetch('https://developer.nps.gov/api/v1/parks?statecode=FL&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq')
 		.then(results =>{
