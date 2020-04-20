@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ReactModal from 'react-modal';
+//import ReactModal from 'react-modal';
 
 import './App.css';
 import Header from './components/header/Header';

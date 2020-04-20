@@ -1,9 +1,10 @@
 // JavaScript Document
 import React from 'react';
+//import Fetch from '../components/Fetch';
+
 //Material UI
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
 import Grid from "@material-ui/core/Grid";
 
 //Images & Icons
@@ -39,7 +40,7 @@ class Parks extends React.Component {
 }
 
 //fetching API
-fetchData(){
+ fetchData(){
 	fetch('https://developer.nps.gov/api/v1/parks?limit=6&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq')
 		.then(results =>{
 		return results.json();
@@ -52,7 +53,7 @@ fetchData(){
 				<span key={use.results}>  
      <Typography variant="body" align="left">
       	<Link color="inherit" href="/">
-		<img src={use.images[0].url} alt={use.images[0].altText} width="300" height="200"/>
+		<img src={use.images[0].url} alt={use.images[0].altText} width="275" height="175"/>
 </Link>{' '}
 </Typography>
 	

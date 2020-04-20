@@ -4,7 +4,7 @@ import React from 'react';
 const modal = (props) => {
     return (
         <div>
-            <div style={{transform: props.show ? 'translateY(-30vh)' : 'translateY(-100vh)',}}>
+            <div style={{transform: props.show ? 'translateY(-40vh)' : 'translateY(-100vh)',}}>
                 <div style={styles.modalHeader}>
                     <h3 style={styles.h3}>Send Us An Email</h3>
                     <span style={styles.closeBtn} onClick={props.close}>×</span>

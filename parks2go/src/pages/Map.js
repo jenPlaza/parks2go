@@ -1,7 +1,7 @@
 // JavaScript Document
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Parks from '../pages/Parks'
+import Parks from '../pages/Parks';
 
 //images
 //import logo2 from '../../images/ptBtn3.png';
@@ -58,6 +58,7 @@ export default function Footer() {
 	   <Grid item xs={12} md={6}>
         <Parks />
         </Grid>
+	  
 	  <Grid item xs={12} md={6}style={styles.map}>
 	  <Grid container style={styles.container}>
       <Grid item xs={2}  style={styles.box}>
