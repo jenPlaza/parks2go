@@ -1,91 +1,85 @@
 // JavaScript Document
 import React from 'react';
-import StateActivities from '../pages/stateActivities';
+import ParkGridStateParks from '../pages/ParkGridStateParks';
 
 //Material UI
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
 
+const id ='FL';
+const endpoint = `stateCode=${id}`;
+
 //Smart Component
 class StateParks extends React.Component {
 	//declaring state and new object
 	state ={
-		parkListing: [],
+		activityListing:[],
 	}
 
 //calling fetchData function
 	componentDidMount(){
-	this.fetchParks();
+		this.fetchActivities();
 }
 
 //fetching API
- fetchParks(){
-	 
-	//state= x;
-
-	// SB: This is how you would access the state code passed in via route params
-	// console.log(this.props.match.params.stateCode)
-	 
-	fetch('https://developer.nps.gov/api/v1/parks?statecode=FL&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq')
+fetchActivities(){
+fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
-	}).then(data =>{
-		
-		let pList = data.data.map((use)=>{
+	}
+			 ).then(data =>{
+		let mList = data.data.map((use)=>{
 			return(
-				
-			  <li key={this.props.id}>
-				<span key={use.results}>  
-     <Typography variant="body" align="left">
-      	<Link color="inherit" href="/">
-		<img src={use.images[0].url} alt={use.images[0].altText} width="350" height="250"/><br />
-		{use.fullName}
-</Link>{' '}
-</Typography>
-				</span>
-				</li>
+			<Typography variant="body" align="left">
+      			<Link  color="inherit" href="/">
+					<div>{use.name}</div>
+				</Link>{' '}
+			 </Typography>	
 			)
 		})
-		
-		this.setState({StateParks:pList});
+		this.setState({StateParks:mList});
 	})
 }
 	 render() { 
   return (
-  <Grid container style={styles.container}>
-	  <Grid item xs={12} style={styles.links}>
-	  <h1> State National Park</h1>
-	   </Grid>
-	    <Grid item xs={12} md={3}style={styles.links}>
-	  	<StateActivities />
-	   </Grid>
+<Grid container>
+	<Grid item xs={7}>
+	  	<ParkGridStateParks />
+	</Grid>
+	<Grid item xs={5}>
+
+	  	<Grid container style={styles.containerSA}>
+	  	 <Grid item xs={12}>
+	  		
+	  	</Grid> 
+	  	<Grid item xs={12} >
 	  
-	  <Grid item xs={12} md={1}style={styles.links}>
-	  	<Link />
-	   </Grid>
-	  
-	  {this.state.StateParks}		
-	  </Grid>
+	  		<div style={styles.activities}>
+	  <h3> Filter parks by activity</h3>
+	 			{this.state.StateParks}
+	   		</div>
+	  	</Grid> 
+	 </Grid>
+	</Grid> 
+</Grid> 
+	
   );
  }
 }
 export default StateParks
 
 const styles ={
-	container:{
-		marginTop:'1%',
-		backgroundColor:'#313638',
-		border:'1px solid red',
-		padding:'1%',
-		color:'white',
+	containerSA:{
+		justifyContent:'center',
 	},
-	links:{
-		height:'auto',
-	},
-	parks:{
+	item:{
 		textAlign:'center',
-		border:'1px solid blue',
-	}
+	},
+	activities:{
+		columns: '1 auto',
+		marginTop:'15%',
+		marginLeft:'30%',
+	},
 }
 

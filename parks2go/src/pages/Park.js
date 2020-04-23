@@ -1,6 +1,7 @@
 // JavaScript Document
 import React from 'react';
 //import Fetch from '../components/Fetch';
+import ImgGallery from '../pages/ImgGallery';
 
 //Material UI
 import Typography from '@material-ui/core/Typography';
@@ -8,10 +9,14 @@ import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
 
 //Images & Icons
-import imgUrl from '../images/parkBackground.jpg';
-import img from '../images/placeholder.jpg';
+import imgUrl from '../images/parkBackground.png';
+import Print from '@material-ui/icons/Print';
 
 import { createMuiTheme } from "@material-ui/core/styles";
+
+const id ='bepa';
+const endpoint = `parkCode=${id}`;
+
 const theme = createMuiTheme({
 	  typography: {
     fontFamily: 'Lora',
@@ -28,11 +33,12 @@ const theme = createMuiTheme({
   },
 });
 
+
 //Smart Component
 class Park extends React.Component {
 	//declaring state and new object
 	state ={
-		parkListing: []
+		parkListing: [],
 	}
 
 //calling fetchData function
@@ -41,118 +47,100 @@ class Park extends React.Component {
 }
 
 //fetch Api data and map json results in a list format
-	/*fetchData(){
-
-	fetch('https://developer.nps.gov/api/v1/parks?parkCode=afam&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq')
+fetchData(){
+	fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
 	}).then(data =>{
-		
-		let mList = data.data.map((use)=>{
+
+		let mList = data.data.map((use, i)=>{
 			return(
-				<div key={this.props.id}>
-				<span key={use.results}>
-				<img src={use.images[0].url} alt={use.images[0].altText} width="400" height="200"/>
-				<h2>{use.name}</h2>
-				<h3>{use.addresses[0].city}, {use.addresses[0].stateCode}</h3>
-				<p><b>Park Details</b><br />
-					    Cost:{use.entranceFees[0].cost},<br />
-					    Description: {use.entranceFees[0].description},<br />
-					    Title: {use.entranceFees[0].title}</p>
-				<p><b>Park Description</b><br /> {use.description}</p>
-				<p><b>Park Activities</b>
-					{use.activities.map(item =>{
-						return(
-							<div>{item.name}</div>	
-								)
-							})
-						}
-					</p>
-				<p><b>Park Info</b><br /> {use.directionsInfo}</p>
-				<p><b>For More Directions</b><br />
-				<Link href='{use.directionsUrl}'>{use.directionsUrl}</Link><br /><br /><br /><br /><br /></p>
-				</span>
-				</div>
+				<Grid container key={i} style={styles.container}>
+	  				<Grid item xs={12} md={8} style={styles.leftCol}>
+	  					<Grid item xs={12} md={11} style={styles.imgs}>
+							<Grid item xs={12} md={11} style={styles.images}>
+									<img src={use.images[0].url} alt={use.images[0].altText} style={{width: '95%', borderRadius: 50, padding: '2%'}}/>
+									</Grid> 
+								<Grid item xs={12} md={11} style={styles.moreImages}>				
+									{use.images.map(p => {
+ 									return (<li key={p} style={styles.indImgs}><img src={p.url} alt={p.altText} style={{width: 80, height: 80, borderRadius: 80/ 2, padding: '1%'}}/></li>
+									)})}
+						</Grid>
+	   					</Grid> 
+	 				
+					<Grid item xs={12} style={styles.indentRight}>
+		  				<h2>Park Activities</h2>
+	  					
+	  					<Grid item xs={11} style={styles.activities}>
+							<ul>
+							{use.activities.map(activity =>{
+							return(
+							<li key={activity} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{activity.name}</li>	
+							)})}
+							</ul>
+	  					</Grid>
+						
+	   				</Grid> 
+	 				<Grid item xs={12} style={styles.indentRight}>
+		  				<h2>Park Topics</h2>
+						
+	  					<Grid item xs={11} style={styles.topics}>
+							<ul>
+							{use.topics.map(topic =>{
+								return(
+								<li key={topic} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{topic.name}</li>	
+								)})}
+								</ul>
+	  					</Grid>
+						
+					</Grid> 
+					<Grid item xs={11} style={styles.indentRight}>
+		  				<h2>Weather Information</h2>
+	  					<p>{use.weatherInfo}</p>
+	   				</Grid> 
+	   			</Grid> 
+	 		<Grid item xs={12} md={4}style={styles.rightCol}>
+				<Grid container>
+					<Grid item xs={12} style={styles.h2}>
+						<Grid container>
+							<Grid item xs={12} style={styles.printer}>
+								<Print size={25}/>
+	  						</Grid> 
+	  						<Grid item xs={12} style={styles.h2}>
+								<h1>{use.name}</h1>
+								<h3 style={styles.moveUp}>{use.addresses[0].line1}, {use.addresses[0].stateCode}<br />
+								{use.addresses[0].city}, {use.addresses[0].stateCode} {use.addresses[0].postalCode}</h3>
+							</Grid> 
+	  					</Grid> 
+	   			</Grid> 
+	 			<Grid item xs={12} style={styles.description}>
+		  				<h2>Park Description</h2>
+	  					<p style={styles.moveUp}>{use.description}</p>
+	   			</Grid>
+				<Grid item xs={12} style={styles.details}>
+		  				<h2>Park Details</h2>
+					    <p style={styles.moveUp}><b>{use.entranceFees[0].description}</b><br />
+					    <b>Cost: </b>{use.entranceFees[0].cost}</p>
+	   			</Grid>
+	 			<Grid item xs={12} style={styles.directions}>
+		  				<h2>Park Directions</h2>
+						<p style={styles.moveUp}>{use.directionsInfo}</p>
+	   			</Grid>
+			</Grid>  
+	   	</Grid>
+	</Grid>  	
+
+				
 			)
 		})
 
 		this.setState({park:mList});
 	})
-}*/
-fetchData(){
-
 }
+
 	 render() { 
   return (
 	  <div style={styles.container}>
-		<Grid container style={styles.container}>
-	  	<Grid item xs={12} md={7} style={styles.leftCol}>
-		  	<Grid container>
-	  			<Grid item xs={12} md={11} style={styles.images}>
-		  <img src={img} alt='park image' style={{width: '95%', borderRadius: 50, padding: '2%'}}/>
-	   			</Grid> 
-	 			<Grid item xs={12} md={11} style={styles.moreImages}>
-		  <img src={img} alt='park image' style={{width: 130, height: 130, borderRadius: 130/ 2, padding: '1%'}}/>
-			 <img src={img} alt='park image' style={{width: 130, height: 130, borderRadius: 130/ 2, padding: '1%'}}/>
-				  <img src={img} alt='park image' style={{width: 130, height: 130, borderRadius: 130/ 2, padding: '1%'}}/>
-					  <img src={img} alt='park image' style={{width: 130, height: 130, borderRadius: 130/ 2, padding: '1%'}}/>
-	   			</Grid>
-				<Grid item xs={12} style={styles.activities}>
-		  <h2>Park Activities</h2>
-
-					<ul>
-						<li>Astronomy</li>
-						<li>Birdwatching</li>
-						<li>Boating</li>
-						<li>Bookstore and Park Store</li>
-						<li>Camping</li>
-						<li>Fishing</li>
-						<li>Guided Tours</li>
-						<li>Junior Ranger Program</li>
-						<li>Paddling</li>
-						<li>SCUBA Diving</li>
-						<li>Shopping</li>
-						<li>Snorkeling</li>
-						<li>Stargazing</li>
-						<li>Swimming</li>
-						<li>Wildlife Watching</li>
-						</ul>
-
-	   			</Grid> 
-	 			<Grid item xs={12} style={styles.topics}>
-		  				<h2>Park Topics</h2>
-	<ul>
-						<li>Astronomy</li>
-						<li>Birdwatching</li>
-						<li>Boating</li>
-	</ul>
-	   			</Grid>
-			</Grid>  
-	   	</Grid> 
-	 	<Grid item xs={12} md={4}style={styles.rightCol}>
-		  	<Grid container>
-	  			<Grid item xs={12} style={styles.h2}>
-		  			<h1>Park</h1>
-	   			</Grid> 
-	 			<Grid item xs={12} style={styles.details}>
-		  			<h2>Park Details</h2>
-					    <p><b>Cost:</b>XXXXXXX,</p><br />
-					    <p><b>Description:</b> Chicory flavour mocha cultivar sugar doppio breve body americano macchiato. Wings caramelization, beans grinder aftertaste irish con panna milk café au lait spoon acerbic. Redeye café au lait body aftertaste milk fair trade mocha robust.,</p><br />
-					    <p><b>Title:</b> Title</p>
-	   			</Grid>
-				<Grid item xs={12} style={styles.description}>
-		  				<h2>Park Description</h2><br /><p> Aromatic galão aroma milk aged, single shot, crema whipped spoon, grinder sweet single shot breve trifecta, mazagran fair trade, cappuccino foam breve crema seasonal americano. Decaffeinated kopi-luwak milk trifecta con panna americano, filter that, flavour that sweet roast trifecta arabica. Foam, java brewed, whipped strong skinny, pumpkin spice, froth, chicory filter caramelization extra, decaffeinated qui, strong dripper acerbic, medium pumpkin spice shop sweet aromatic. </p>
-	   			</Grid> 
-	 			<Grid item xs={12} style={styles.directions}>
-		  				<h1><a>Directions</a></h1>
-	   			</Grid>
-				<Grid item xs={12} style={styles.buttons}>
-		  				<button >Print</button>
-						<button >Save</button>
-	   			</Grid> 
-			</Grid>  
-	   	</Grid>
-	</Grid>  
 	  {this.state.park}
 		</div>			
   	);
@@ -163,29 +151,60 @@ export default Park
 
 const styles ={
 	container:{
-		marginTop:'1%',
-		border:'1px solid red',
 		backgroundImage: 'url(' + imgUrl + ')',	
+		marginBottom:'-3%',
+		paddingBottom:'5%',
+		paddingRight:'3%',
 	},
-	images:{
-backgroundColor:'#313638',
-		 borderBottomRightRadius: 15,
-    borderTopRightRadius: 15,
-		border:'0.5px solid grey'
-		
+	imgs:{
+		backgroundColor:'rgb(15,15,15,0.7)',
 	},
 	moreImages:{
-backgroundColor:'#313638',
+		backgroundColor:'rgb(15,15,15,0.7)',
+		borderBottomRightRadius: 30,
+		marginBottom:'10%',
 		padding:'2%',
-		 borderBottomRightRadius: 15,
-    borderTopRightRadius: 15,
-		border:'0.5px solid grey'
+		columns: '5 auto',
+	},
+	indImgs:{
+		marginRight:'-5%',
+		listStyleType:'none',
 	},
 rightCol:{
 	color:'white',
 },
 	leftCol:{
 	color:'white',
-}
+},
+	printer:{
+		marginTop:'7%',
+		textAlign:'right',
+	},
+	moveUp:{
+		marginTop:'-4%',
+	},
+	activities:{
+		columns: '3 auto',
+		marginBottom:'10%',
+		listStyleType:'none',
+	},
+	topics:{
+		columns: '3 auto',
+		listStyleType:'none',
+		marginBottom:'10%',
+	},
+	indentRight:{
+		paddingLeft:'5%',
+	},
+	description:{
+		marginBottom:'8%',
+		marginTop:'10%',
+	},
+	details:{
+		marginBottom:'6%',
+	},
+	directions:{
+		marginBottom:'6%',
+	},
 }
 
