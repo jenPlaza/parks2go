@@ -22,7 +22,6 @@ class ImgGallery extends React.Component {
 fetchData(){
 	const urlArray=[];
 	const apiImages = [];
-	const uniqueArray = [];
 	
  fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
@@ -48,14 +47,15 @@ let mList = data.data.map((use, i)=>{
 		var id = url2.split(",");
 	
 		console.log("id: "+id.length);
+	var i = 0;
 	
-	for( var i = 0; i < id.length; i++)
+	for( ; i < id.length; i++)
 	{ if ( id[i] === "") { id.splice(i, 1); }}
 	
-	for( var i = 0; i < id.length; i++)
+	for( ; i < id.length; i++)
 		{console.log("id[i]: "+id[i]);}
 	
-	for( var i = 0; i < id.length; i++)
+	for( ; i < id.length; i++)
 		{
 	 apiImages.push({
     original: `https://www.nps.gov/common/uploads/structured_data/${id[i]}?w=500&h=300`,

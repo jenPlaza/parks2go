@@ -1,14 +1,20 @@
 // JavaScript Document
 import React from 'react';
 import ParkGridStateParks from '../pages/ParkGridStateParks';
+import Map from './Map';
 
 //Material UI
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
 
-const id ='FL';
-const endpoint = `stateCode=${id}`;
+//console.log(window.location.pathname);
+ let sCode = window.location.pathname;
+ let newSC = sCode.split('/StateParks/');
+ newSC.shift();
+
+const targetId = newSC;
+const endpoint = `stateCode=${targetId}`;
 
 //Smart Component
 class StateParks extends React.Component {
@@ -31,11 +37,9 @@ fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNw
 			 ).then(data =>{
 		let mList = data.data.map((use)=>{
 			return(
-			<Typography variant="body" align="left">
-      			<Link  color="inherit" href="/">
+				<Link>
 					<div>{use.name}</div>
-				</Link>{' '}
-			 </Typography>	
+				</Link>
 			)
 		})
 		this.setState({StateParks:mList});

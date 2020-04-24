@@ -4,8 +4,6 @@ import React from 'react';
 import ImgGallery from '../pages/ImgGallery';
 
 //Material UI
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
 
 //Images & Icons
@@ -14,8 +12,8 @@ import Print from '@material-ui/icons/Print';
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const id ='bepa';
-const endpoint = `parkCode=${id}`;
+const targetId ='bepa';
+const endpoint = `parkCode=${targetId}`;
 
 const theme = createMuiTheme({
 	  typography: {

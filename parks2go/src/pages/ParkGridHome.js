@@ -22,7 +22,7 @@ const theme = createMuiTheme({
   },
 });
 
-const endpoint = 'limit=6';
+const endpoint = 'limit=4';
 
 //Smart Component
 class ParkGridHome extends React.Component {
@@ -47,7 +47,7 @@ class ParkGridHome extends React.Component {
 			return(
 			 <li key={i} style={styles.indImgs}> 
       			<Link color="inherit" href="/">
-					<img src={use.images[0].url} alt={use.images[0].altText} width="295" height="195"/>
+					<img src={use.images[0].url} alt={use.images[0].altText} style={{width: '100%'}}/>
 				</Link>
 			  </li>
 			)
@@ -62,9 +62,6 @@ class ParkGridHome extends React.Component {
 	  <Grid item xs={12} md={6}>
 	  <Link />
 	  </Grid>
-	   <Grid item xs={12} md={6}>
-	  <Link />
-	   </Grid>
 	  {this.state.ParkGridHome}		
 	  </Grid>
   );
