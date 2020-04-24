@@ -17,7 +17,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import Link from '@material-ui/core/Link';
 
 //Images & Icons
-//import logo from '../../images/postIt.png';
+import logo from '../../images/parks2go_logo.png';
 
 //styles
 const useStyles = makeStyles(theme => ({
@@ -195,9 +195,9 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.logo} >
-            
-          </Typography>
+          <Link className={classes.logo} href='/'>
+            <img src={logo} alt="Logo icon" style={{width: '65%', padding: '2%'}}/>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

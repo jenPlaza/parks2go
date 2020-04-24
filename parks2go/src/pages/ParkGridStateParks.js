@@ -20,7 +20,7 @@ class ParkGridStateParks extends React.Component {
 		parkListing: [],
 	}
 
-stateClick(event) {
+parkClick(event) {
 	window.onclick= event => {
 		//console.log(event.target);
 		//console.log(event.target.id);
@@ -43,11 +43,9 @@ stateClick(event) {
 	}).then(data =>{
 
 		let mList = data.data.map((use, i)=>{
-			var parkId = use.parkCode
-			console.log(parkId);
 			return(
 				<Box key={i}>
-				<img id={parkId} src={use.images[1].url} alt={use.images[1].altText} style={{width:'100%'}} onClick={this.stateClick}/>
+				<img id={use.parkCode} src={use.images[1].url} alt={use.images[1].altText} style={{width:'100%'}} onClick={this.parkClick}/>
 				<h2 style={styles.h2}>{use.name}</h2>
 				<h3 style={styles.h3}>{use.addresses[1].city}, {use.addresses[1].stateCode}</h3>
 				</Box>

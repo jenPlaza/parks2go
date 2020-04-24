@@ -2,7 +2,7 @@
 import React from 'react';
 
 //Material UI
-import Link from '@material-ui/core/Link';
+import Box from '@material-ui/core/Box';
 import Grid from "@material-ui/core/Grid";
 
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -28,8 +28,18 @@ const endpoint = 'limit=4';
 class ParkGridHome extends React.Component {
 	//declaring state and new object
 	state ={
-		parkListing: []
+		imageListing: []
 	}
+
+parkClick(event) {
+	window.onclick= event => {
+		//console.log(event.target);
+		//console.log(event.target.id);
+		
+		var parkId = event.target.id;
+		window.location.assign(`http://localhost:3000/Park/${parkId}`);
+	};
+} 
 
 //calling fetchData function
 	componentDidMount(){
@@ -45,11 +55,13 @@ class ParkGridHome extends React.Component {
 		
 		let mList = data.data.map((use, i)=>{
 			return(
-			 <li key={i} style={styles.indImgs}> 
-      			<Link color="inherit" href="/">
-					<img src={use.images[0].url} alt={use.images[0].altText} style={{width: '100%'}}/>
-				</Link>
-			  </li>
+				<li key={i} style={styles.indImgs}> 
+				<Box key={i}>
+				<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={{width:'100%'}} onClick={this.parkClick}/>
+				<h2 style={styles.h2}><b>{use.name}</b></h2>
+				<h4 style={styles.h4}>{use.addresses[0].city}, {use.addresses[0].stateCode}</h4>
+				</Box>
+				</li>
 			)
 		})
 		
@@ -60,7 +72,7 @@ class ParkGridHome extends React.Component {
   return (
   <Grid container style={styles.container}>
 	  <Grid item xs={12} md={6}>
-	  <Link />
+	  <Box />
 	  </Grid>
 	  {this.state.ParkGridHome}		
 	  </Grid>
@@ -80,5 +92,16 @@ const styles ={
 	},
 	indImgs:{
 	listStyleType:'none',
+		padding:'3%',
+	},
+	h2:{
+		marginTop:'-13%',
+		paddingLeft:'1%',
+		color:'white',
+	},
+	h4:{
+		marginTop:'-4%',
+		paddingLeft:'1%',
+		color:'white',
 	},
 }
