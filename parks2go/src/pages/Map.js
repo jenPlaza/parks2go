@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StateParks from '../pages/StateParks';
+import StateParks from './StateParks';
 
 //Material UI
 import USAMap from "react-usa-map";
