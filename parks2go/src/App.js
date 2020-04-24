@@ -57,8 +57,8 @@ const useStyles = makeStyles(theme => ({
 		paddingTop:'5%',
 		paddingLeft:'5%',
 		paddingRight:'5%',
-		backgroundColor:'#001400',
-		//backgroundColor:'#002000',
+		backgroundColor:'#272B2D',
+		//backgroundColor:'#222628',
 		//backgroundColor:'#313638',
 	},
 }));

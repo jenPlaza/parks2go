@@ -12,8 +12,15 @@ import Print from '@material-ui/icons/Print';
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const targetId ='bepa';
-const endpoint = `parkCode=${targetId}`;
+let pCode = window.location.pathname;
+console.log(pCode);
+let newPC = pCode.split('/Park/');
+ newPC.shift();
+
+const parkId = newPC;
+console.log(pCode);
+//const parkId ='bepa';
+const endpoint = `parkCode=${parkId}`;
 
 const theme = createMuiTheme({
 	  typography: {
