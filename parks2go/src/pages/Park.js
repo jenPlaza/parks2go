@@ -63,14 +63,8 @@ fetchData(){
 				<Grid container key={i} style={styles.container}>
 	  				<Grid item xs={12} md={8} style={styles.leftCol}>
 	  					<Grid item xs={12} md={11} style={styles.imgs}>
-							<Grid item xs={12} md={11} style={styles.images}>
-									<img src={use.images[0].url} alt={use.images[0].altText} style={{width: '95%', borderRadius: 50, padding: '2%'}}/>
-									</Grid> 
-								<Grid item xs={12} md={11} style={styles.moreImages}>				
-									{use.images.map(p => {
- 									return (<li key={p} style={styles.indImgs}><img src={p.url} alt={p.altText} style={{width: 80, height: 80, borderRadius: 80/ 2, padding: '1%'}}/></li>
-									)})}
-						</Grid>
+							<ImgGallery />
+				
 	   					</Grid> 
 	 				
 					<Grid item xs={12} style={styles.indentRight}>
@@ -80,7 +74,7 @@ fetchData(){
 							<ul>
 							{use.activities.map(activity =>{
 							return(
-							<li key={activity} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{activity.name}</li>	
+							<li key={activity.name} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{activity.name}</li>	
 							)})}
 							</ul>
 	  					</Grid>
@@ -93,7 +87,7 @@ fetchData(){
 							<ul>
 							{use.topics.map(topic =>{
 								return(
-								<li key={topic} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{topic.name}</li>	
+								<li key={topic.name} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{topic.name}</li>	
 								)})}
 								</ul>
 	  					</Grid>

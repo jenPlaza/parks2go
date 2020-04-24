@@ -28,12 +28,15 @@ fetchData(){
 		return results.json();
 	}
 	).then(data =>{
+	 
 let mList = data.data.map((use, i)=>{
+	console.log(use,i);
 	return(
 		<div key={i}>
 			  <Grid container>
 	  					<Grid item xs={12} md={5} style={styles.imgs}>
 		{use.images.map(p => {
+		console.log(p);
 		let url = p.url;
 		let urlString = url.toString();
 	
