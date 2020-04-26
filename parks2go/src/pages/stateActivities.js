@@ -11,7 +11,7 @@ import Grid from "@material-ui/core/Grid";
 
 //console.log(window.location.pathname);
  let sCode = window.location.pathname;
- let newSC = sCode.split('/stateActivities');
+ let newSC = sCode.split('/stateActivities/');
  newSC.shift();
 
 const targetId = newSC;
@@ -51,7 +51,7 @@ fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNw
 		let mList = data.data.map((use, i)=>{
 			return(
 				<Link >
-					<li key={use.id} name={use.name} id={use.id} onClick={this.activityClick}>{use.name}</li>
+					<li key={use.id} name={use.name} id={use.id} style={styles.li} onClick={this.activityClick}>{use.name}</li>
 				</Link>
 			)
 		})
@@ -85,8 +85,10 @@ const styles ={
 	containerSA:{
 		justifyContent:'center',
 	},
-	item:{
-		textAlign:'center',
+	li:{
+		color:'grey',
+		textDecoration:'none',
+		listStyleType:'none',
 	},
 	activities:{
 		columns: '1 auto',
