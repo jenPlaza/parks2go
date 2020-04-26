@@ -1,89 +1,80 @@
 // JavaScript Document
-import React from 'react';
-import ParkGridStateParks from '../pages/ParkGridStateParks';
-import Map from './Map';
+import React, {Component} from 'react';
+import LargeImage from '../components/imgGallery/largeImage'
+import ThumbnailGrid from '../components/imgGallery/thumbnail-grid'
 
 //Material UI
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
+import Link from '@material-ui/core/Link';
 
 //console.log(window.location.pathname);
- let sCode = window.location.pathname;
- let newSC = sCode.split('/StateParks/');
+let sCode = window.location.pathname;
+ let newSC = sCode.split('/stateParks/');
  newSC.shift();
+const parkId = newSC;
 
+const activity = 'artsandculture'
 const targetId = newSC;
-const endpoint = `stateCode=${targetId}`;
+//const endpoint = `stateCode=${targetId}`;
+const endpoint = null;
 
-//Smart Component
 class StateParks extends React.Component {
-	//declaring state and new object
 	state ={
-		activityListing:[],
+		imageArray: [],
+		imgIndex: 0
 	}
 
 //calling fetchData function
 	componentDidMount(){
-		this.fetchActivities();
-}
-
-//fetching API
-fetchActivities(){
-fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
-		.then(results =>{
-		return results.json();
+	this.fetchData();
 	}
-			 ).then(data =>{
-		let mList = data.data.map((use)=>{
-			return(
-				<Link>
-					<div>{use.name}</div>
-				</Link>
-			)
-		})
-		this.setState({StateParks:mList});
-	})
-}
-	 render() { 
-  return (
-<Grid container>
-	<Grid item xs={7}>
-	  	<ParkGridStateParks />
-	</Grid>
-	<Grid item xs={5}>
 
-	  	<Grid container style={styles.containerSA}>
-	  	 <Grid item xs={12}>
-	  		
-	  	</Grid> 
-	  	<Grid item xs={12} >
-	  
-	  		<div style={styles.activities}>
-	  <h3> Filter parks by activity</h3>
-	 			{this.state.StateParks}
-	   		</div>
-	  	</Grid> 
-	 </Grid>
-	</Grid> 
-</Grid> 
-	
-  );
+	//fetch Api data and map json results in a list format
+	fetchData(){
+		fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
+			.then(results =>{return results.json();}
+		).then(data =>{data.data.forEach((use, i)=>{
+			console.log(data.data[i].images);
+			this.setState({imageArray:data.data[i].images})
+
+			})
+		})
+	}
+
+ lgImage = () => {
+	const {imageArray, imgIndex} = this.state
+	if(imageArray.length){
+		return(
+				<LargeImage 
+			lgImage={imageArray[imgIndex]}
+			/>
+		)
+	}
+	 return null
  }
+ 
+ handleClick =(e) => {
+const imageSelection = e.target.getAttribute('imgindex')
+	 this.setState({imgIndex: imageSelection})
+ }
+	render(){
+		return(
+			<Grid container style={styles.container}> 
+			
+				<Grid item xs={12} style={styles.thumbnails}>
+					<ThumbnailGrid thumbnails={this.state.imageArray} handleClick={this.handleClick}/>
+				</Grid>
+			</Grid>
+		)
+	}
 }
 export default StateParks
 
 const styles ={
-	containerSA:{
-		justifyContent:'center',
-	},
-	item:{
-		textAlign:'center',
-	},
-	activities:{
-		columns: '1 auto',
-		marginTop:'15%',
-		marginLeft:'30%',
-	},
+	container: {
+padding:'4%',
+},
+thumbnails: {
+marginTop:'-20%',
+},
 }
-

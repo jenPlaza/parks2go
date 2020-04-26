@@ -9,10 +9,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Link from '@material-ui/core/Link';
 
@@ -27,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
 	  display: 'block',
 	  marginRight: theme.spacing(2),
-	color: theme.palette.primary.main,
+	color: theme.palette.secondary.main,
     [theme.breakpoints.up('md')]: {
     display: 'none',
 	},
@@ -40,46 +37,14 @@ const useStyles = makeStyles(theme => ({
 		width:'auto',
     },
   },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.black, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.black, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('lg')]: {
-      marginLeft: theme.spacing(-1),
-      width: '100%',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing(5),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: theme.palette.primary.main,
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 200,
-    },
-  },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
+  },
+	largeIcon: {
+	transform: 'scale(1.5)',
   },
   sectionMobile: {
     display: 'flex',
@@ -137,7 +102,7 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Bryan Rogers</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Jen Plaza</MenuItem>
       <MenuItem onClick={handleMenuClose}><Links /></MenuItem>
     </Menu>
   );
@@ -153,24 +118,9 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="primary">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+      
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
+        <IconButton 
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
@@ -187,7 +137,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar>
-          <IconButton
+          <IconButton 
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -196,40 +146,19 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Link className={classes.logo} href='/'>
-            <img src={logo} alt="Logo icon" style={{width: '65%', padding: '2%'}}/>
+            <img src={logo} alt="Logo icon" style={{width: '25%', padding: '1%'}}/>
           </Link>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="primary">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="primary">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
+
+            <IconButton className={classes.largeIcon}
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="primary"
+              color="secondary"
             >
               <AccountCircle />
             </IconButton>

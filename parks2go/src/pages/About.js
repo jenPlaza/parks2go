@@ -1,6 +1,6 @@
 // JavaScript Document
 import React from 'react';
-import Modal from '../components/modal/Modal';
+import Modal from '../components/modal/modal';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';

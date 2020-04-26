@@ -1,11 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-//import ReactModal from 'react-modal';
 
 import './App.css';
-import Header from './components/header/Header';
-import Routes from './components/Routes';
-import Footer from './components/footer/Footer';
+import Header from './components/header/header';
+import Routes from './components/routes';
+import Footer from './components/footer/footer';
 
 //React Router
 import{ BrowserRouter as Router }from 'react-router-dom'
@@ -41,16 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
 	headerRow:{
 		padding:'1%',
-		backgroundColor:'white',
-	},
-	paper:{
-		backgroundColor: "transparent",
-		border:'none',
-	},
-	paperRight:{
-		backgroundColor: "transparent",
-		border:'none',
-		marginTop:'6%',
+		backgroundColor:'#272B2D',
 	},
 	footerRow:{
 		marginTop:'2%',
@@ -72,13 +62,13 @@ export default function App() {
       	<Grid container spacing={0} >
         <Grid item xs={12} className={classes.headerRow}>
           <Header />
+	  <hr />
         </Grid>
 	  
 		<Grid container spacing={1}>
-
-        <Grid item xs={12}>
-          <Routes />
-        </Grid>
+        	<Grid item xs={12}>
+          	<Routes />
+        	</Grid>
 		</Grid>
 	  
 	  <Grid item xs={12} className={classes.footerRow}>

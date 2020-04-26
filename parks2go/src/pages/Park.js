@@ -1,7 +1,6 @@
 // JavaScript Document
 import React from 'react';
-//import Fetch from '../components/Fetch';
-import ImgGallery from '../pages/ImgGallery';
+import ImgGallery from '../components/imgGallery/imgGallery'
 
 //Material UI
 import Grid from "@material-ui/core/Grid";
@@ -12,14 +11,11 @@ import Print from '@material-ui/icons/Print';
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
+console.log(window.location.pathname);
 let pCode = window.location.pathname;
-console.log(pCode);
-let newPC = pCode.split('/Park/');
+let newPC = pCode.split('/park/');
  newPC.shift();
-
 const parkId = newPC;
-console.log(pCode);
-//const parkId ='bepa';
 const endpoint = `parkCode=${parkId}`;
 
 const theme = createMuiTheme({
@@ -37,7 +33,6 @@ const theme = createMuiTheme({
     },
   },
 });
-
 
 //Smart Component
 class Park extends React.Component {
@@ -57,29 +52,28 @@ fetchData(){
 		.then(results =>{
 		return results.json();
 	}).then(data =>{
-
 		let mList = data.data.map((use, i)=>{
 			return(
-				<Grid container key={i} style={styles.container}>
+				<Grid container style={styles.container}>
 	  				<Grid item xs={12} md={8} style={styles.leftCol}>
-	  					<Grid item xs={12} md={11} style={styles.imgs}>
+{/*Park Images*/}	
+	  					<Grid item xs={11} style={styles.imgs}>
 							<ImgGallery />
-				
 	   					</Grid> 
 	 				
+{/*Park Activities*/}
 					<Grid item xs={12} style={styles.indentRight}>
 		  				<h2>Park Activities</h2>
-	  					
 	  					<Grid item xs={11} style={styles.activities}>
 							<ul>
 							{use.activities.map(activity =>{
 							return(
-							<li key={activity.name} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{activity.name}</li>	
+							<li key={activity.id} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{activity.name}</li>	
 							)})}
 							</ul>
 	  					</Grid>
-						
 	   				</Grid> 
+{/*Park Topics*/}
 	 				<Grid item xs={12} style={styles.indentRight}>
 		  				<h2>Park Topics</h2>
 						
@@ -87,12 +81,13 @@ fetchData(){
 							<ul>
 							{use.topics.map(topic =>{
 								return(
-								<li key={topic.name} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{topic.name}</li>	
+								<li key={topic.id} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{topic.name}</li>	
 								)})}
 								</ul>
 	  					</Grid>
 						
 					</Grid> 
+{/*Weather*/}
 					<Grid item xs={11} style={styles.indentRight}>
 		  				<h2>Weather Information</h2>
 	  					<p>{use.weatherInfo}</p>
@@ -112,31 +107,31 @@ fetchData(){
 							</Grid> 
 	  					</Grid> 
 	   			</Grid> 
+{/*Park Description*/}
 	 			<Grid item xs={12} style={styles.description}>
 		  				<h2>Park Description</h2>
 	  					<p style={styles.moveUp}>{use.description}</p>
 	   			</Grid>
+{/*Park Details*/}
 				<Grid item xs={12} style={styles.details}>
 		  				<h2>Park Details</h2>
 					    <p style={styles.moveUp}><b>{use.entranceFees[0].description}</b><br />
 					    <b>Cost: </b>{use.entranceFees[0].cost}</p>
 	   			</Grid>
+{/*Park Directions*/}
 	 			<Grid item xs={12} style={styles.directions}>
 		  				<h2>Park Directions</h2>
 						<p style={styles.moveUp}>{use.directionsInfo}</p>
 	   			</Grid>
 			</Grid>  
 	   	</Grid>
-	</Grid>  	
-
-				
+	</Grid>  		
 			)
 		})
 
 		this.setState({park:mList});
 	})
 }
-
 	 render() { 
   return (
 	  <div style={styles.container}>
@@ -157,17 +152,7 @@ const styles ={
 	},
 	imgs:{
 		backgroundColor:'rgb(15,15,15,0.7)',
-	},
-	moreImages:{
-		backgroundColor:'rgb(15,15,15,0.7)',
-		borderBottomRightRadius: 30,
-		marginBottom:'10%',
-		padding:'2%',
-		columns: '5 auto',
-	},
-	indImgs:{
-		marginRight:'-5%',
-		listStyleType:'none',
+		borderBottomRightRadius:'40',
 	},
 rightCol:{
 	color:'white',

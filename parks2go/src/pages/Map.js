@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import StateParks from './StateParks';
+import React from 'react';
+import StateActivities from './stateActivities';
 
 //Material UI
 import USAMap from "react-usa-map";
 
-class Map extends Component {
+class Map extends React.Component {
 	
   mapHandler = (event) => {
 	  var targetId = event.target.dataset.name;
-	  window.location.assign(`http://localhost:3000/StateParks/${targetId}`);
+	  window.location.assign(`http://localhost:3000/stateActivities/${targetId}`);
   };
   render() {
     return (
       <div>
-        <USAMap onClick={this.mapHandler}/>
+        <USAMap onClick={this.mapHandler} width={'108%'}/>
       </div>
     );
   }
