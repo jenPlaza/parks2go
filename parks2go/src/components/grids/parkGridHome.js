@@ -37,7 +37,7 @@ parkClick(event) {
 		//console.log(event.target.id);
 		
 		var parkId = event.target.id;
-		window.location.assign(`http://localhost:3000/Park/${parkId}`);
+		window.location.assign(`http://localhost:3000/park/${parkId}`);
 	};
 } 
 
@@ -61,7 +61,6 @@ parkClick(event) {
 				<h2 style={styles.h2}><b>{use.name}</b></h2>
 				<h5 style={styles.h5}>{use.addresses[0].city}, {use.addresses[0].stateCode}</h5>
 				</Box>
-				
 			)
 		})
 		

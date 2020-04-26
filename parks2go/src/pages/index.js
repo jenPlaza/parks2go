@@ -1,16 +1,11 @@
 // JavaScript Document
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import ParkGridHome from '../components/grids/parkGridHome';
 import States from '../components/USA_states/states';
 import Map from '../pages/map'
 
-//images
-//import logo2 from '../../images/ptBtn3.png';
-
 //Material UI
 import Grid from "@material-ui/core/Grid";
-import Link from '@material-ui/core/Link';
 
 class Index extends React.Component {
 	

@@ -6,6 +6,7 @@ import ThumbnailGrid from '../components/imgGallery/thumbnail-grid'
 //Material UI
 import Grid from "@material-ui/core/Grid";
 import Link from '@material-ui/core/Link';
+import Box from '@material-ui/core/Box';
 
 //console.log(window.location.pathname);
 let sCode = window.location.pathname;
@@ -15,8 +16,7 @@ const parkId = newSC;
 
 const activity = 'artsandculture'
 const targetId = newSC;
-//const endpoint = `stateCode=${targetId}`;
-const endpoint = null;
+const endpoint = `stateCode=${targetId}`;
 
 class StateParks extends React.Component {
 	state ={
@@ -30,16 +30,55 @@ class StateParks extends React.Component {
 	}
 
 	//fetch Api data and map json results in a list format
-	fetchData(){
-		fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
-			.then(results =>{return results.json();}
-		).then(data =>{data.data.forEach((use, i)=>{
-			console.log(data.data[i].images);
-			this.setState({imageArray:data.data[i].images})
+fetchData(){
+	fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
+		.then(results =>{
+		return results.json();
+	}).then(data =>{
+		let mList = data.data.map((use, i)=>{
+			return(
+				<Grid container style={styles.container}>
+	  				<Grid item xs={12} md={8} style={styles.leftCol}>
+{/*Park Images*/}	
+	  					<Grid item xs={11} style={styles.imgs}>
+							<h2>Park Images</h2>
+	  					<Grid item xs={11} style={styles.activities}>
+							<ul>
+							{use.images.map(img =>{
+							return(
+							<li key={img.id} style={{}}>
+								<Box key={i}>
+									<img id={use.parkCode} src={img.url} alt={img.altText} style={{width:'100%'}} onClick={this.parkClick}/>
+								</Box>
+							</li>	
+							)})}
+							</ul>
+	  					</Grid>
+	   					</Grid> 
+			
+	 				
+{/*Park Activities*/}
+					<Grid item xs={12} style={styles.indentRight}>
+		  				<h2>Park Activities</h2>
+	  					<Grid item xs={11} style={styles.activities}>
+							<ul>
+							{use.activities.map(activity =>{
+							return(
+							<li key={activity.id} style={{}}>{activity.name}</li>	
+							)})}
+							</ul>
+	  					</Grid>
+	   				</Grid> 
 
-			})
+	   			</Grid> 
+	 		
+			</Grid>   		
+			)
 		})
-	}
+
+		this.setState({StateParks:mList});
+	})
+}
 
  lgImage = () => {
 	const {imageArray, imgIndex} = this.state
@@ -62,7 +101,7 @@ const imageSelection = e.target.getAttribute('imgindex')
 			<Grid container style={styles.container}> 
 			
 				<Grid item xs={12} style={styles.thumbnails}>
-					<ThumbnailGrid thumbnails={this.state.imageArray} handleClick={this.handleClick}/>
+					{this.state.StateParks}
 				</Grid>
 			</Grid>
 		)

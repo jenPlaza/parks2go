@@ -2,10 +2,8 @@
 import React from 'react';
 import{ BrowserRouter as Router }from 'react-router-dom'
 import ParkGridStateParks from '../components/grids/parkGridStateParks';
-import Map from './map';
 
 //Material UI
-import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
 
@@ -15,7 +13,7 @@ import Grid from "@material-ui/core/Grid";
  newSC.shift();
 
 const targetId = newSC;
-const activityName = 'Food';
+const activity = 'Food';
 const endpoint = `stateCode=${targetId}`;
 
 //Smart Component

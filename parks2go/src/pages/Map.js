@@ -1,5 +1,4 @@
 import React from 'react';
-import StateActivities from './stateActivities';
 
 //Material UI
 import USAMap from "react-usa-map";

@@ -1,5 +1,5 @@
 // JavaScript Document
-import React, {Component} from 'react';
+import React from 'react';
 import LargeImage from './largeImage'
 import ThumbnailGrid from './thumbnail-grid'
 

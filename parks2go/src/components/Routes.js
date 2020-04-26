@@ -27,7 +27,7 @@ export default function Routes() {
 					//SB Added this as a "route param" demo
 					<Route exact path='/stateActivities/:targetId' component={StateActivities} />
 					}
-	  //<Route exact path='/stateActivities/:activity' component={StateActivities} />
+	  {/*<Route exact path='/stateActivities/:activity' component={StateActivities} />*/}
 	  				<Route exact path='/stateParks' component={StateParks} />
 	  				<Route exact path='/stateParks/:targetId' component={StateParks} />
 	  				<Route exact path='/park' component={Park} />

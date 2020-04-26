@@ -191,4 +191,3 @@ rightCol:{
 		marginBottom:'6%',
 	},
 }
-

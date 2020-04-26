@@ -28,7 +28,7 @@ class States extends React.Component {
 	 			<Link><li style={styles.li} onClick={this.linkClick} id={'CT'} >Conneticut</li></Link>
      			<Link><li style={styles.li} onClick={this.linkClick} id={'DC'} >District of Columbia</li></Link>
      			<Link><li style={styles.li} onClick={this.linkClick} id={'DE'} >Delaware</li></Link>
-     			<Link><li style={styles.li} onClick={this.linkClick} id={'FL'} onClick={this.linkHandler} >Florida</li></Link>
+     			<Link><li style={styles.li} onClick={this.linkClick} id={'FL'} >Florida</li></Link>
       			<Link><li style={styles.li} onClick={this.linkClick} id={'GA'}>Georgia</li></Link>
       			<Link><li style={styles.li} onClick={this.linkClick} id={'HI'}>Hawaii</li></Link>
       			<Link><li style={styles.li} onClick={this.linkClick} id={'ID'} >Idaho</li></Link>
