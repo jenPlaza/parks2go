@@ -133,7 +133,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
+      <AppBar position="static" style={styles.appBr}>
         <Toolbar>
           <IconButton 
             edge="start"
@@ -144,7 +144,7 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Link className={classes.logo} href='/'>
-            <img src={logo} alt="Logo icon" style={{width: '25%', padding: '1%'}}/>
+            <img src={logo} alt="Logo icon" style={styles.logo} />
           </Link>
 
           <div className={classes.grow} />
@@ -178,4 +178,14 @@ export default function PrimarySearchAppBar() {
       {renderMenu}
     </div>
   );
+}
+const styles ={
+	appBr:{
+		background: 'transparent', 
+		boxShadow: 'none'
+	},
+	logo:{
+		width: '25%', 
+		padding: '1%'
+	},
 }

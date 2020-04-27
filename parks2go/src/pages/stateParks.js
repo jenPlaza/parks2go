@@ -82,7 +82,7 @@ const styles ={
 	indImgs:{
 	height: '100%',
 	width:'100%',
-		marginBottom:'5%',
+		marginBottom:'10%',
 	},
 	h2:{
 		marginTop:'-20%',

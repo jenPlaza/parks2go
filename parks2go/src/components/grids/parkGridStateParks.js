@@ -45,7 +45,7 @@ parkClick(event) {
 		let mList = data.data.map((use, i)=>{
 			return(
 				<Box key={i}>
-				<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={{width:'100%'}} onClick={this.parkClick}/>
+				<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={styles.image} onClick={this.parkClick}/>
 				<h2 style={styles.h2}><b>{use.name}</b></h2>
 				<h4 style={styles.h4}>{use.addresses[0].city}, {use.addresses[0].stateCode}</h4>
 				</Box>
@@ -73,6 +73,9 @@ parkClick(event) {
 }
 export default ParkGridStateParks
 const styles ={
+	image:{
+		width:'100%',
+	},
 	h1:{
 		textAlign:'center',
 	},

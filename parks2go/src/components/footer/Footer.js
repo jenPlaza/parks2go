@@ -33,10 +33,6 @@ const useStyles = makeStyles(theme => ({
 		color:'white',
 		textDecoration:'none',
 	},
-	p2g:{
-		color:'#ea7a0f',
-		textDecoration:'none',
-	},
 	states:{
 	fontSize:'1.25em',
 		textAlign:'center',

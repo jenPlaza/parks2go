@@ -40,7 +40,7 @@ parkClick(event) {
 			return(
 				
 				<Box key={i}>
-				<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={{width:'100%'}} onClick={this.parkClick}/>
+				<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={{width:'100%'}} onClick={this.parkClick} />
 				<h2 style={styles.h2}><b>{use.name}</b></h2>
 				<h5 style={styles.h5}>{use.addresses[0].city}, {use.addresses[0].stateCode}</h5>
 				</Box>
@@ -71,7 +71,7 @@ const styles ={
 		fontSize:'3em',
 		color: 'white',
 	},
-	indImgs:{
+	li:{
 	listStyleType:'none',
 	},
 	h2:{
