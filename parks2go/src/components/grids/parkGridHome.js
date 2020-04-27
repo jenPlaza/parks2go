@@ -54,7 +54,7 @@ parkClick(event) {
   return (
   <Grid container style={styles.container}>
 	  <Grid item xs={12} md={5}>
-	  <li style={styles.indImgs}> 
+	  <li style={styles.li}> 
 	  <Box />
 	  </li>
 	  </Grid>

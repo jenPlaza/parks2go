@@ -13,7 +13,7 @@ const parkId = newSC;
 
 const activity = 'artsandculture'
 const targetId = newSC;
-const endpoint = `stateCode=${targetId}`;
+const endpoint = `statecode=${targetId}`;
 
 //Smart Component
 class StateParks extends React.Component {
@@ -82,7 +82,7 @@ const styles ={
 	indImgs:{
 	height: '100%',
 	width:'100%',
-		marginBottom:'10%',
+		marginBottom:'5%',
 	},
 	h2:{
 		marginTop:'-20%',

@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
  newSC.shift();
 
 const targetId = newSC;
-const endpoint = `stateCode=${targetId}&limit=2`;
+const endpoint = `statecode=${targetId}&limit=2`;
 
 
 //Smart Component
