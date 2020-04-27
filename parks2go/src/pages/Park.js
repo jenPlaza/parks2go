@@ -7,32 +7,13 @@ import Grid from "@material-ui/core/Grid";
 
 //Images & Icons
 import imgUrl from '../images/parkBackground.png';
-import Print from '@material-ui/icons/Print';
 
-import { createMuiTheme } from "@material-ui/core/styles";
-
-console.log(window.location.pathname);
+//console.log(window.location.pathname);
 let pCode = window.location.pathname;
 let newPC = pCode.split('/park/');
  newPC.shift();
 const parkId = newPC;
 const endpoint = `parkCode=${parkId}`;
-
-const theme = createMuiTheme({
-	  typography: {
-    fontFamily: 'Lora',
-  },
-	palette: {
-    primary: {
-      light: '#B9B9B9',
-      main: '#000000',
-    },
-    secondary: {
-      main: '#ea7a0f',
-      contrastText: '#ffffff',
-    },
-  },
-});
 
 //Smart Component
 class Park extends React.Component {
@@ -97,9 +78,6 @@ fetchData(){
 				<Grid container>
 					<Grid item xs={12} style={styles.h2}>
 						<Grid container>
-							<Grid item xs={12} style={styles.printer}>
-								<Print size={25}/>
-	  						</Grid> 
 	  						<Grid item xs={12} style={styles.h2}>
 								<h1>{use.name}</h1>
 								<h3 style={styles.moveUp}>{use.addresses[0].line1}, {use.addresses[0].stateCode}<br />
@@ -161,7 +139,7 @@ rightCol:{
 	color:'white',
 },
 	printer:{
-		marginTop:'7%',
+		marginTop:'0%',
 		textAlign:'right',
 	},
 	moveUp:{

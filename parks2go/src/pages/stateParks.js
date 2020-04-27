@@ -1,11 +1,8 @@
 // JavaScript Document
-import React, {Component} from 'react';
-import LargeImage from '../components/imgGallery/largeImage'
-import ThumbnailGrid from '../components/imgGallery/thumbnail-grid'
+import React from 'react';
 
 //Material UI
 import Grid from "@material-ui/core/Grid";
-import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 
 //console.log(window.location.pathname);
@@ -18,102 +15,83 @@ const activity = 'artsandculture'
 const targetId = newSC;
 const endpoint = `stateCode=${targetId}`;
 
+//Smart Component
 class StateParks extends React.Component {
+	//declaring state and new object
 	state ={
-		imageArray: [],
-		imgIndex: 0
+		picListing: []
 	}
+
+parkClick(event) {
+	window.onclick= event => {
+		//console.log(event.target);
+		//console.log(event.target.id);
+		
+		var parkId = event.target.id;
+		window.location.assign(`http://localhost:3000/park/${parkId}`);
+	};
+} 
 
 //calling fetchData function
 	componentDidMount(){
 	this.fetchData();
-	}
+}
 
-	//fetch Api data and map json results in a list format
-fetchData(){
+//fetching API
+ fetchData(){
 	fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
 	}).then(data =>{
+		
 		let mList = data.data.map((use, i)=>{
 			return(
-				<Grid container style={styles.container}>
-	  				<Grid item xs={12} md={8} style={styles.leftCol}>
-{/*Park Images*/}	
-	  					<Grid item xs={11} style={styles.imgs}>
-							<h2>Park Images</h2>
-	  					<Grid item xs={11} style={styles.activities}>
-							<ul>
-							{use.images.map(img =>{
-							return(
-							<li key={img.id} style={{}}>
-								<Box key={i}>
-									<img id={use.parkCode} src={img.url} alt={img.altText} style={{width:'100%'}} onClick={this.parkClick}/>
-								</Box>
-							</li>	
-							)})}
-							</ul>
-	  					</Grid>
-	   					</Grid> 
-			
-	 				
-{/*Park Activities*/}
-					<Grid item xs={12} style={styles.indentRight}>
-		  				<h2>Park Activities</h2>
-	  					<Grid item xs={11} style={styles.activities}>
-							<ul>
-							{use.activities.map(activity =>{
-							return(
-							<li key={activity.id} style={{}}>{activity.name}</li>	
-							)})}
-							</ul>
-	  					</Grid>
-	   				</Grid> 
-
-	   			</Grid> 
-	 		
-			</Grid>   		
+			<Box key={i}>
+				<div>
+				<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={styles.indImgs} onClick={this.parkClick}/>
+				<h2 style={styles.h2}><b>{use.name}</b></h2>
+				<h5 style={styles.h5}>{use.addresses[0].city}, {use.addresses[0].stateCode}</h5>
+				</div>
+				</Box>
 			)
 		})
-
+		
 		this.setState({StateParks:mList});
 	})
 }
-
- lgImage = () => {
-	const {imageArray, imgIndex} = this.state
-	if(imageArray.length){
-		return(
-				<LargeImage 
-			lgImage={imageArray[imgIndex]}
-			/>
-		)
-	}
-	 return null
+	 render() { 
+  return (
+	  <Grid container>
+	   <Grid item xs={12}style={styles.item}>
+	{this.state.StateParks}
+	  </Grid>
+       </Grid>		
+  );
  }
- 
- handleClick =(e) => {
-const imageSelection = e.target.getAttribute('imgindex')
-	 this.setState({imgIndex: imageSelection})
- }
-	render(){
-		return(
-			<Grid container style={styles.container}> 
-			
-				<Grid item xs={12} style={styles.thumbnails}>
-					{this.state.StateParks}
-				</Grid>
-			</Grid>
-		)
-	}
 }
 export default StateParks
 
 const styles ={
-	container: {
-padding:'4%',
-},
-thumbnails: {
-marginTop:'-20%',
-},
+	item:{
+	columns:'3',
+		margin:'1%'
+	},
+	li:{
+	listStyleType:'none',	
+	},
+	indImgs:{
+	height: '100%',
+	width:'100%',
+		marginBottom:'5%',
+	},
+	h2:{
+		marginTop:'-20%',
+		paddingLeft:'3%',
+		color:'white',
+	},
+	h5:{
+		marginTop:'-6%',
+		paddingLeft:'3%',
+		color:'white',
+	},
 }

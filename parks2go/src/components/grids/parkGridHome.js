@@ -5,23 +5,6 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Grid from "@material-ui/core/Grid";
 
-import { createMuiTheme } from "@material-ui/core/styles";
-const theme = createMuiTheme({
-	  typography: {
-    fontFamily: 'Lora',
-  },
-	palette: {
-    primary: {
-      light: '#B9B9B9',
-      main: '#000000',
-    },
-    secondary: {
-      main: '#ea7a0f',
-      contrastText: '#ffffff',
-    },
-  },
-});
-
 const endpoint = 'limit=4';
 
 //Smart Component
@@ -86,7 +69,7 @@ const styles ={
 	h1:{
 		textAlign:'center',
 		fontSize:'3em',
-		color: theme.palette.secondary.main
+		color: 'white',
 	},
 	indImgs:{
 	listStyleType:'none',

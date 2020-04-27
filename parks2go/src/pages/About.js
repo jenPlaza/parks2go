@@ -3,32 +3,10 @@ import React from 'react';
 import Modal from '../components/modal/modal';
 
 //Material UI
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 //Images & Icons
 import imgUrl from '../images/parkAbout.jpg';
-
-//style
-const useStyles = makeStyles(theme => ({
-  about:{
-	  padding:'6%',
-	  color:'white',
-	},
-	contact:{
-	  padding:'2%',
-
-	  color:'#280004',
-		textAlign:'center',
-	},
-	address:{
-	  textAlign:'center',
-	},
-	sendUs:{
-		paddingLeft:'3%',
-	},
-}));
-
 
 //exporting class About
 class About extends React.Component {
