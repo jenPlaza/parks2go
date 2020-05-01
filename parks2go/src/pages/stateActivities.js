@@ -4,8 +4,28 @@ import{ BrowserRouter as Router }from 'react-router-dom'
 import ParkGridStateParks from '../components/grids/parkGridStateParks';
 
 //Material UI
+import {withStyles} from '@material-ui/styles';
 import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
+
+const useStyles = {
+	containerSA:{
+		justifyContent:'space-around',
+		padding:'5%',
+	},
+	li:{
+		color:'grey',
+		textDecoration:'none',
+		listStyleType:'none',
+	},
+	activities:{
+		columns: '1 auto',
+		marginTop:'-8%',
+	},
+	h1:{
+		textAlign:'center',
+	},
+};
 
 //console.log(window.location.pathname);
  let sCode = window.location.pathname;
@@ -13,8 +33,7 @@ import Grid from "@material-ui/core/Grid";
  newSC.shift();
 
 const targetId = newSC;
-const activity = 'Food';
-const endpoint = `stateCode=${targetId}`;
+const endpoint = `statecode=${targetId}`;
 
 //Smart Component
 class StateActivities extends React.Component {
@@ -25,12 +44,14 @@ class StateActivities extends React.Component {
 
 activityClick(event) {
 	window.onclick= event => {
-		//console.log(event.target);
+		console.log(event.target);
 		console.log(event.target.id);
 		console.log(event.target.name);
 		
-		var activity = event.target.name;
-		window.location.assign(`http://localhost:3000/stateParks/${targetId}`);
+		//var activity = event.target.name;
+		const activityName = 'Food';
+		const activityId = event.target.id;
+		window.location.assign(`http://localhost:3000/stateParks/${targetId}/${activityId}`);
 	};
 } 
 
@@ -39,14 +60,28 @@ activityClick(event) {
 		this.fetchActivities();
 }
 
+filterByActivity(current_value, i){
+			
+			for(let i=0; i< current_value.activities.length;i++ ) {
+				let activity = current_value.activities[i];
+				if(activity.id ==='7CE6E935-F839-4FEC-A63E-052B1DEF39D2')
+					return true;
+			}
+			//console.log(current_value);
+		return false;
+}
+
 //fetching API
-fetchActivities(){
+fetchActivities(props){
 fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
 	}
 			 ).then(data =>{
+		//let filteredArray = data.data.filter(this.filterByActivity);
+		
 		let mList = data.data.map((use, i)=>{
+			const  {classes}  = this.props;
 			return(
 				<Link >
 					<li key={use.id} name={use.name} id={use.id} style={styles.li} onClick={this.activityClick}>{use.name}</li>
@@ -56,10 +91,14 @@ fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNw
 		this.setState({StateActivities:mList});
 	})
 }
-	 render() { 
+	 render(props) { 
+		const  {classes}  = this.props; 
   return (
 <Router>
 <Grid container>
+	  	  <Grid item xs={12}>
+	  		<h1 style={styles.h1}>{targetId} State National Parks</h1>
+	  	</Grid> 
 		<Grid item xs={7}>
 	  		<ParkGridStateParks />
 		</Grid>
@@ -78,10 +117,12 @@ fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNw
  }
 }
 export default StateActivities
+//export default withStyles(useStyles)(StateActivities);
 
 const styles ={
 	containerSA:{
-		justifyContent:'center',
+		justifyContent:'space-around',
+		padding:'5%',
 	},
 	li:{
 		color:'grey',
@@ -90,8 +131,10 @@ const styles ={
 	},
 	activities:{
 		columns: '1 auto',
-		marginTop:'15%',
-		marginLeft:'30%',
+		marginTop:'-8%',
+	},
+	h1:{
+		textAlign:'center',
 	},
 }
 

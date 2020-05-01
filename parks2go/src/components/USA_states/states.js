@@ -2,89 +2,94 @@
 import React from 'react';
 
 //Material UI
+import {makeStyles} from '@material-ui/styles';
 import Grid from "@material-ui/core/Grid";
 import Link from '@material-ui/core/Link';
 
-class States extends React.Component {
-	
-	linkClick(event) {
-	window.onclick= event => {
-	 //console.log(event.target);
-	 //console.log(event.target.id);
-	  var targetId = event.target.id;
-	  window.location.assign(`http://localhost:3000/stateActivities/${targetId}`);
-	};
-};
-  render() {
-    return(
-      <Grid container >
-      		<Grid item xs={12}  style={styles.box}>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'AL'}>Alabama</li></Link>
-				<Link><li style={styles.li} onClick={this.linkClick} id={'AK'} >Alaska</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'AZ'} >Arizona</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'AR'} >Arkansas</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'CA'} >California</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'CO'} >Colorado</li></Link>
-	 			<Link><li style={styles.li} onClick={this.linkClick} id={'CT'} >Conneticut</li></Link>
-     			<Link><li style={styles.li} onClick={this.linkClick} id={'DC'} >District of Columbia</li></Link>
-     			<Link><li style={styles.li} onClick={this.linkClick} id={'DE'} >Delaware</li></Link>
-     			<Link><li style={styles.li} onClick={this.linkClick} id={'FL'} >Florida</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'GA'}>Georgia</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'HI'}>Hawaii</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'ID'} >Idaho</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'IL'} >Illinois</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'IN'} >Indiana</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'IA'} >Iowa</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'KS'} >Kansas</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'KY'} >Kentucky</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'LA'} >Louisiana</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'ME'} >Maine</li></Link>
-				<Link><li style={styles.li} onClick={this.linkClick} id={'MD'} >Maryland</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'MA'} >Massachusetts</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'MI'} >Michigan</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'MN'} >Minnesota</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'MS'} >Mississippi</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'MO'} >Missouri</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'MT'} >Montana</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'NE'} >Nebraska</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'NV'} >Nevada</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'NH'} >New Hampshire</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'NJ'} >New Jersey</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'NM'} >New Mexico</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'NY'} >New York</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'NC'} >North Carolina</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'ND'} >North Dakota</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'OH'} >Ohio</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'OK'} >Oklahoma</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'OR'} >Oregon</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'PA'} >Pennsylvania</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'RI'} >Rhode Island</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'SC'} >South Carolina</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'SD'} >South Dakota</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'TN'} >Tennessee</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'TX'} >Texas</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'UT'} >Utah</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'VT'} >Vermont</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'VA'} >Virginia</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'WA'} >Washington</li></Link>
-      			<Link><li style={styles.li} onClick={this.linkClick} id={'WV'} >West Virginia</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'WI'} >Wisconsin</li></Link>
-	  			<Link><li style={styles.li} onClick={this.linkClick} id={'WY'} >Wyoming</li></Link>
-	  		</Grid>
-      	</Grid>
-  	);
-  }
-}
-
-export default States;
-const styles ={
+const useStyles = makeStyles(theme => ({
+ul:{
+		margin:'0',
+		padding:'0',
+	},
 	li:{
+		listStyleType:'none',
+	},
+	link:{
 		color:'grey',
 		textDecoration:'none',
-		listStyleType:'none',
 	},
 	box:{
 		columns:'4',
-		padding:'4%',
+		padding:'1%',
 	},
+}));
+
+export default function Map() {
+	  const classes = useStyles();
+//class States extends React.Component {
+	const stateArray = [
+				{ id:'AL', name: 'Alabama'},
+				{ id:'AK', name: 'Alaska'},
+      			{ id:'AZ', name: 'Arizona'},
+      			{ id:'AR', name: 'Arkansas'},
+      			{ id:'CA', name: 'California'},
+      			{ id:'CO', name: 'Colorado'},
+	 			{ id:'CT', name: 'Conneticut'},
+     			{ id:'DC', name: 'District of Columbia'},
+     			{ id:'DE', name: 'Delaware'},
+     			{ id:'FL', name: 'Florida'},
+      			{ id:'GA', name: 'Georgia'},
+      			{ id:'HI', name: 'Hawaii'},
+      			{ id:'ID', name: 'Idaho'},
+	  			{ id:'IL', name: 'Illinois'},
+      			{ id:'IN', name: 'Indiana'},
+      			{ id:'IA', name: 'Iowa'},
+      			{ id:'KS', name: 'Kansas'},
+      			{ id:'KY', name: 'Kentucky'},
+      			{ id:'LA', name: 'Louisiana'},
+	  			{ id:'ME', name: 'Maine'},
+				{ id:'MD', name: 'Maryland'},
+      			{ id:'MA', name: 'Massachusetts'},
+      			{ id:'MI', name: 'Michigan'},
+      			{ id:'MN', name: 'Minnesota'},
+      			{ id:'MS', name: 'Mississippi'},
+	  			{ id:'MO', name: 'Missouri'},
+      			{ id:'MT', name: 'Montana'},
+      			{ id:'NE', name: 'Nebraska'},
+	  			{ id:'NV', name: 'Nevada'},
+      			{ id:'NH', name: 'New Hampshire'},
+      			{ id:'NJ', name: 'New Jersey'},
+	  			{ id:'NM', name: 'New Mexico'},
+      			{ id:'NY', name: 'New York'},
+      			{ id:'NC', name: 'North Carolina'},
+      			{ id:'ND', name: 'North Dakota'},
+      			{ id:'OH', name: 'Ohio'},
+      			{ id:'OK', name: 'Oklahoma'},
+	  			{ id:'OR', name: 'Oregon'},
+      			{ id:'PA', name: 'Pennsylvania'},
+      			{ id:'RI', name: 'Rhode Island'},
+      			{ id:'SC', name: 'South Carolina'},
+      			{ id:'SD', name: 'South Dakota'},
+      			{ id:'TN', name: 'Tennessee'},
+	  			{ id:'TX', name: 'Texas'},
+      			{ id:'UT', name: 'Utah'},
+      			{ id:'VT', name: 'Vermont'},
+      			{ id:'VA', name: 'Virginia'},
+      			{ id:'WA', name: 'Washington'},
+      			{ id:'WV', name: 'West Virginia'},
+	  			{ id:'WI', name: 'Wisconsin'},
+	  			{ id:'WY', name: 'Wyoming'}
+	]
+	
+    return(
+	    <Grid container >
+      		<Grid item xs={12}  className={classes.box}>
+				<ul className={classes.ul}>
+					{stateArray.map((e,i)=>{
+						return(<li key={i} className={classes.li} > <Link className={classes.link} href={"/stateActivities/"+e.id}>{e.name}</Link></li>)
+							})}
+				</ul>
+	  		</Grid>
+      	</Grid>
+  	);
 }

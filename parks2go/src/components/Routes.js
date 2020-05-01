@@ -4,7 +4,7 @@ import{ Route, Switch } from 'react-router-dom'
 //pages
 import Home from '../pages/index'
 import About from '../pages/about'
-import Map from '../pages/map'
+import Map from '../components/map/map'
 import ParkGridHome from '../components/grids/parkGridHome'
 import ParkGridStateParks from '../components/grids/parkGridStateParks'
 import StateActivities from '../pages/stateActivities'
@@ -27,7 +27,7 @@ export default function Routes() {
 					//SB Added this as a "route param" demo
 					<Route exact path='/stateActivities/:targetId' component={StateActivities} />
 					}
-	  {/*<Route exact path='/stateActivities/:activity' component={StateActivities} />*/}
+	  <Route exact path='/stateActivities/:activity' component={StateActivities} />
 	  				<Route exact path='/stateParks' component={StateParks} />
 	  				<Route exact path='/stateParks/:targetId' component={StateParks} />
 	  				<Route exact path='/park' component={Park} />

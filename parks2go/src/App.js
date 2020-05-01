@@ -40,13 +40,11 @@ const useStyles = makeStyles(theme => ({
   },
 	headerRow:{
 		padding:'1%',
+		marginBottom:'-2px',
 		backgroundColor:'#272B2D',
 	},
 	footerRow:{
-		marginTop:'2%',
-		paddingTop:'5%',
-		paddingLeft:'5%',
-		paddingRight:'5%',
+		padding:'5%',
 		backgroundColor:'#272B2D',
 		//backgroundColor:'#222628',
 		//backgroundColor:'#313638',

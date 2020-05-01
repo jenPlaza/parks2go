@@ -4,7 +4,17 @@ import LargeImage from './largeImage'
 import ThumbnailGrid from './thumbnail-grid'
 
 //Material UI
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
+
+const useStyles = makeStyles(theme => ({
+  container: {
+padding:'4%',
+},
+thumbnails: {
+marginTop:'-20%',
+},
+}));
 
 let pCode = window.location.pathname;
 let newPC = pCode.split('/park/');
@@ -51,7 +61,9 @@ class ImageGallery extends React.Component {
 const imageSelection = e.target.getAttribute('imgindex')
 	 this.setState({imgIndex: imageSelection})
  }
-	render(){
+	render(props) { 
+		const  {classes}  = this.props;
+		
 		return(
 			<Grid container style={styles.container}> 
 			<Grid item xs={12} >
@@ -65,6 +77,7 @@ const imageSelection = e.target.getAttribute('imgindex')
 	}
 }
 export default ImageGallery
+//export default withStyles(useStyles)(ImageGallery);
 
 const styles ={
 	container: {

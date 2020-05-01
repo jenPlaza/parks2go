@@ -2,10 +2,41 @@
 import React from 'react';
 
 //Material UI
-import Box from '@material-ui/core/Box';
-import Grid from "@material-ui/core/Grid";
+import {withStyles} from '@material-ui/styles';
+import GridList from '@material-ui/core/GridList';
+import Grid from '@material-ui/core/Grid';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-const endpoint = 'limit=4';
+ const useStyles = {
+  root:{
+	direction:'row',
+	flexGrow:'1',
+	margin:'1%',
+	},
+container:{
+    display: 'flex',
+	 flexWrap: 'wrap',
+	justifyContent: 'space-around',
+	overflow: 'hidden',
+	},
+gridList: {
+	padding:'0.4%',
+  },
+paper: { 
+    textAlign: 'center',
+		width:'400px',
+		height: '300px',
+		listStyleType:'none',
+		backgroundColor:'white',
+  },
+indImgs:{
+	height: '100%',
+	width:'100%',
+	},
+};
+
+const endpoint = 'limit=3';
 
 //Smart Component
 class ParkGridHome extends React.Component {
@@ -17,7 +48,6 @@ class ParkGridHome extends React.Component {
 parkClick(event) {
 	window.onclick= event => {
 		//console.log(event.target);
-		//console.log(event.target.id);
 		
 		var parkId = event.target.id;
 		window.location.assign(`http://localhost:3000/park/${parkId}`);
@@ -30,58 +60,71 @@ parkClick(event) {
 }
 
 //fetching API
- fetchData(){
+ fetchData(props){
+	  
 	fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
 	}).then(data =>{
 		
 		let mList = data.data.map((use, i)=>{
+			const  {classes}  = this.props;
 			return(
-				
-				<Box key={i}>
-				<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={{width:'100%'}} onClick={this.parkClick} />
-				<h2 style={styles.h2}><b>{use.name}</b></h2>
-				<h5 style={styles.h5}>{use.addresses[0].city}, {use.addresses[0].stateCode}</h5>
-				</Box>
+				<Grid container style={styles.container}>
+				<GridList key={i} style={styles.gridList}>
+				<GridListTile style={styles.paper} >
+					<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={styles.indImgs} onClick={this.parkClick} />
+				<GridListTileBar title={use.images[0].title} subtitle={<span>{use.addresses[0].city}, {use.addresses[0].stateCode}</span>} />
+				</GridListTile>	
+				</GridList>
+				</Grid>
 			)
 		})
 		
 		this.setState({ParkGridHome:mList});
 	})
 }
-	 render() { 
+	 render(props) { 
+		const  {classes}  = this.props;
   return (
-  <Grid container style={styles.container}>
-	  <Grid item xs={12} md={5}>
-	  <li style={styles.li}> 
-	  <Box />
-	  </li>
-	  </Grid>
-	  {this.state.ParkGridHome}		
-	  </Grid>
+
+      <div style={styles.root}>
+				
+	  		{this.state.ParkGridHome}	
+     
+    
+				</div>
   );
  }
 }
 export default ParkGridHome
+//export default withStyles(useStyles)(ParkGridHome);
 
 const styles ={
-	h1:{
-		textAlign:'center',
-		fontSize:'3em',
-		color: 'white',
+root:{
+	direction:'row',
+	flexGrow:'1',
+	margin:'1%',
 	},
-	li:{
-	listStyleType:'none',
+container:{
+    display: 'flex',
+	 flexWrap: 'wrap',
+	justifyContent: 'space-around',
+	overflow: 'hidden',
 	},
-	h2:{
-		marginTop:'-15%',
-		paddingLeft:'1%',
-		color:'white',
-	},
-	h5:{
-		marginTop:'-6%',
-		paddingLeft:'1%',
-		color:'white',
+gridList: {
+	padding:'0.4%',
+  },
+paper: { 
+    textAlign: 'center',
+		width:'400px',
+		height: '300px',
+		listStyleType:'none',
+		backgroundColor:'white',
+  },
+indImgs:{
+	height: '100%',
+	width:'100%',
 	},
 }
+

@@ -29,21 +29,43 @@ const useStyles = makeStyles(theme => ({
 		marginTop:'-0.5%',
 		color:'white',
 	},
+	
 	a:{
 		color:'white',
 		textDecoration:'none',
 	},
+	 'a:visited': {
+              color: 'green'
+            },
+	 'a:hover': {
+              color: 'yellow'
+            },
+									   
 	states:{
 	fontSize:'1.25em',
 		textAlign:'center',
 		marginTop:'-0.5%',
-		marginBottom:'-1%',
+		marginBottom:'1%',
+		margin:'1%',
 		color:'white',
-	marginLeft:'-14%',	
+	marginLeft:'-14%',
 	},
 	copyright:{
 		color:theme.palette.secondary.main,
 		marginTop:'-4%',
+	},
+	container:{
+		marginTop:'-2%',
+		justifyContent:'center',
+	},
+	about:{
+		paddingRight:'4%',
+		color:'white',
+	},
+	display:{
+		display:'block',
+		paddingLeft:'35%',
+	color:'white',
 	}
 }));
 
@@ -69,7 +91,7 @@ export default function Footer() {
     <div className={classes.root}>
       <Grid container>
 
-	  <Grid item xs={12} md={3} style={styles.about}>
+	  <Grid item xs={12} md={3} className={classes.about}>
 		<h2 className={classes.h2}>About Us</h2>
 					<p><a className={classes.p2g} href='http://localhost:3000/About'>Parks2Go</a> ipsum dolor sit amet. The hotel, the casino. The Corleone Family wants to buy you out. I don’t like violence, Tom. I’m a businessman; blood is a big expense.</p>
         </Grid>
@@ -81,30 +103,14 @@ export default function Footer() {
 
       <Grid item xs={12} md={1}>
 	  <h2 className={classes.h2}>Connect</h2>
-	  <Facebook style={styles.display}/>
-	  <Instagram style={styles.display}/>
-	  <Twitter style={styles.display}/>
-	  <Youtube style={styles.display} />
+	  <Facebook className={classes.display}/>
+	  <Instagram className={classes.display}/>
+	  <Twitter className={classes.display}/>
+	  <Youtube className={classes.display} />
       </Grid>
 	    
 		<Grid item xs={12} md={12}><Copyright /></Grid>
       </Grid>
     </div>
   );
-}
-
-const styles ={
-	container:{
-		marginTop:'-2%',
-		justifyContent:'center',
-	},
-	about:{
-		paddingRight:'4%',
-		color:'white',
-	},
-	display:{
-		display:'block',
-		paddingLeft:'35%',
-	color:'white',
-	}
 }
