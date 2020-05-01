@@ -31,16 +31,12 @@ const useStyles = makeStyles(theme => ({
 	},
 	
 	a:{
-		color:'white',
+		color:theme.palette.secondary.main,
 		textDecoration:'none',
 	},
-	 'a:visited': {
-              color: 'green'
-            },
-	 'a:hover': {
-              color: 'yellow'
-            },
-									   
+	'a:visited':{
+		color:'grey',
+	},
 	states:{
 	fontSize:'1.25em',
 		textAlign:'center',
@@ -93,7 +89,7 @@ export default function Footer() {
 
 	  <Grid item xs={12} md={3} className={classes.about}>
 		<h2 className={classes.h2}>About Us</h2>
-					<p><a className={classes.p2g} href='http://localhost:3000/About'>Parks2Go</a> ipsum dolor sit amet. The hotel, the casino. The Corleone Family wants to buy you out. I don’t like violence, Tom. I’m a businessman; blood is a big expense.</p>
+					<p><a className={classes.a} href='http://localhost:3000/About'>Parks2Go</a> ipsum dolor sit amet. The hotel, the casino. The Corleone Family wants to buy you out. I don’t like violence, Tom. I’m a businessman; blood is a big expense.</p>
         </Grid>
 	  
         <Grid item xs={12} md={8}>

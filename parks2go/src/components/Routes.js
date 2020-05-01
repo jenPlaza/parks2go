@@ -22,15 +22,14 @@ export default function Routes() {
 	  				<Route exact path='/map' component={Map} />
 	  				
 					<Route exact path='/parkGridStateParks' component={ParkGridStateParks} />
-	  				<Route exact path='/stateActivities' component={StateActivities} />
-					{ 
-					//SB Added this as a "route param" demo
+
+					{/*SB Added this as a "route param" demo*/}
 					<Route exact path='/stateActivities/:targetId' component={StateActivities} />
-					}
-	  <Route exact path='/stateActivities/:activity' component={StateActivities} />
+					
+	  				<Route exact path='/stateParks/:targetId/:activity' component={StateParks} />
+	  				{/*<Route exact path='/stateActivities/:activity' component={StateActivities} />
 	  				<Route exact path='/stateParks' component={StateParks} />
-	  				<Route exact path='/stateParks/:targetId' component={StateParks} />
-	  				<Route exact path='/park' component={Park} />
+	  				<Route exact path='/park' component={Park} />*/}
 	  				<Route exact path='/park/:parkId' component={Park} />
 				</Switch>
 			</div>

@@ -1,5 +1,6 @@
 // JavaScript Document
 import React from 'react';
+import Inprogress from '../progress_indicator/inProgress'
 
 //Material UI
 import {withStyles} from '@material-ui/styles';
@@ -51,6 +52,7 @@ class ParkGridStateParks extends React.Component {
 	//declaring state and new object
 	state ={
 		parkArray: [],
+		isLoading: false,
 	}
 
 parkClick(event) {
@@ -70,28 +72,50 @@ parkClick(event) {
 //fetching API
 fetchData(props){
 	 //const classes = useStyles();
+	this.setState({ isLoading: true }, () => {
 		
 	fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
-	}).then(data =>{
-
-		let mList = data.data.map((use, i)=>{
-			const  {classes}  = this.props;
-			return(
-			<GridList key={i} style={styles.gridList}>
-				<GridListTile style={styles.paper}>
-					<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={styles.indImgs} onClick={this.parkClick} />
-				<GridListTileBar title={use.images[0].title} subtitle={<span>{use.addresses[0].city}, {use.addresses[0].stateCode}</span>} />
-				</GridListTile>	
-				</GridList>
-			)
+	}).then(data => {this.setState({
+		 isLoading:false,
+		data:[data.data]
 		})
-		this.setState({ParkGridStateParks:mList});
+					 
+					 console.log('data',data)
+					})
+		//console.log(data)
+		//console.log("state", this.state.data)
 	})
-} 
-	 render(props) { 
-		//const  {classes}  = this.props;
+}		   
+	 render() { 
+		 //const classes = useStyles();
+		 const { data, isLoading } = this.state; 
+		 	console.log(isLoading)
+			
+		 if(isLoading){
+            return <Inprogress />
+          }
+			
+			let newArray = data;
+			 console.log(newArray)
+			 
+			if (newArray != null) {
+        		return (
+            		 <GridList  style={styles.gridList}>
+                		{newArray.map((use =>
+					
+							<GridListTile style={styles.paper}>
+								{console.log(use)}
+								<img key={use.images[0].id} id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} style={styles.indImgs} onClick={this.parkClick}/>
+								<GridListTileBar title={use.images[0].title} subtitle={<span>{use.addresses[0].city}, {use.addresses[0].stateCode}</span>} />
+					
+							</GridListTile>	
+							))
+						}
+            		</GridList>
+        		);
+    }
   return (
  <div style={styles.root}>
       <Grid container style={styles.container}>

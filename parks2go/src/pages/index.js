@@ -28,16 +28,6 @@ const useStyles = makeStyles(theme => ({
 
 	export default function Index() {
  const classes = useStyles();
-
-	 const linkClick = (event) => {
-	//linkClick(event) {
-	window.onclick= event => {
-	 //console.log(event.target);
-	
-	  var targetId = event.target.id;
-	  window.location.assign(`http://localhost:3000/stateActivities/${targetId}`);
-	};
- };
     return(
     <div className={classes.container}>
       <Grid container >

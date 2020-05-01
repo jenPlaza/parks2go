@@ -40,51 +40,52 @@ class StateActivities extends React.Component {
 	//declaring state and new object
 	state ={
 		activityListing:[],
-	}
-
-activityClick(event) {
-	window.onclick= event => {
-		console.log(event.target);
-		console.log(event.target.id);
-		console.log(event.target.name);
-		
-		//var activity = event.target.name;
-		const activityName = 'Food';
-		const activityId = event.target.id;
-		window.location.assign(`http://localhost:3000/stateParks/${targetId}/${activityId}`);
-	};
-} 
+	} 
 
 //calling fetchData function
 	componentDidMount(){
 		this.fetchActivities();
 }
 
-filterByActivity(current_value, i){
-			
-			for(let i=0; i< current_value.activities.length;i++ ) {
+filterByActivity(current_value, i, activityId){
+	for(let i=0; i< current_value.activities.length;i++ ) {
 				let activity = current_value.activities[i];
-				if(activity.id ==='7CE6E935-F839-4FEC-A63E-052B1DEF39D2')
+				console.log(activity);
+				//if(activity.id ==='7CE6E935-F839-4FEC-A63E-052B1DEF39D2')
+				//if(activity.id === `${activityId}`)
 					return true;
 			}
 			//console.log(current_value);
 		return false;
 }
 
+activityClick(event) {
+	window.onclick= event => {
+		console.log(event.target);
+		
+		//const activityId = '7CE6E935-F839-4FEC-A63E-052B1DEF39D2';
+		const activityId = event.target.id;
+		window.location.assign(`http://localhost:3000/stateParks/${targetId}/${activityId}`);
+	};
+}
+
 //fetching API
 fetchActivities(props){
-fetch(`https://developer.nps.gov/api/v1/activities?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
+fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
 	}
 			 ).then(data =>{
-		//let filteredArray = data.data.filter(this.filterByActivity);
+		let filteredArray = data.data.filter(this.filterByActivity);
 		
-		let mList = data.data.map((use, i)=>{
+		let mList = filteredArray.map((use, i)=>{
 			const  {classes}  = this.props;
 			return(
-				<Link >
-					<li key={use.id} name={use.name} id={use.id} style={styles.li} onClick={this.activityClick}>{use.name}</li>
+				<Link key={i}>
+				{use.activities.map(activity =>{
+					return(
+					<li key={activity.id} id={activity.id} style={styles.li} onClick={this.activityClick}>{activity.name}</li>	
+						)})}
 				</Link>
 			)
 		})

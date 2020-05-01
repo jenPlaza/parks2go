@@ -77,7 +77,8 @@ filterByActivity(current_value, i){
 			
 			for(let i=0; i< current_value.activities.length;i++ ) {
 				let activity = current_value.activities[i];
-				if(activity.id ==='7CE6E935-F839-4FEC-A63E-052B1DEF39D2')
+				//if(activity.id ==='7CE6E935-F839-4FEC-A63E-052B1DEF39D2')
+				if(activity.id === `${activityId}`)
 					return true;
 			}
 			//console.log(current_value);
@@ -94,7 +95,7 @@ filterByActivity(current_value, i){
 		
 		let filteredArray = data.data.filter(this.filterByActivity);
 		
-		let mList = data.data.map((use, i)=>{
+		let mList = filteredArray.map((use, i)=>{
 			const  {classes}  = this.props;
 			return(
 				<GridList key={i} style={styles.gridList}>
