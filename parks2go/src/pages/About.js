@@ -63,7 +63,7 @@ Parks2Go is a free interactive guide to National State Parks around the country,
 
 Parks2Go worked hard to build an app specifically focused on finding State National Parks. The app was designed to pull information on locations, descriptions, fees, activitities, topics, images, and weather, so you don't have to. <br /><br />
 
-Whether you are in the mood for biking, site seeing, or swimming, you can filter the parks to eactly what you want to do. Parks2Gos main functionality revolves around an interactive map, that allows you to click on a desired state, to plan your next adventure. All images are clickable and will also direct you to that specific park.<br /><br />
+Whether you are in the mood for biking, site seeing, or swimming, you can filter the parks to exactly what you want to do. Parks2Gos main functionality revolves around an interactive map, that allows you to click on a desired state, to plan your next adventure. All images are clickable and will also direct you to that specific park.<br /><br />
 
 Parks2Go is a very simple app to work, which is one of the reasons why I am proud to offer this service to you.</p>
 	  				</section>
