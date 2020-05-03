@@ -1,10 +1,12 @@
 import React from 'react';
+
+//Material UI
 import USAMap from "react-usa-map";
 import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
 map:{
-		textAlign:'center',
+		justifyContent: 'space-around',
 	},
 }));
 
@@ -18,7 +20,7 @@ export default function Map() {
 	
     return (
       <div className={classes.map}>
-        <USAMap onClick={mapHandler} width={'100%'}/>
+        <USAMap onClick={mapHandler} width={'104%'}/>
       </div>
     );
 }

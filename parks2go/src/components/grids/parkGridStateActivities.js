@@ -1,20 +1,26 @@
 // JavaScript Document
 import React from 'react';
+import Inprogress from '../progress_indicator/inProgress'
 
 //Material UI
 import GridList from '@material-ui/core/GridList';
-import Grid from '@material-ui/core/Grid';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import Inprogress from '../progress_indicator/inProgress'
 
-const endpoint = 'limit=3';
+ let sCode = window.location.pathname;
+ let newSC = sCode.split('/stateActivities/');
+ newSC.shift();
+
+const targetId = newSC;
+const endpoint = `statecode=${targetId}&limit=2`;
+
 
 //Smart Component
-class ParkGridHome extends React.Component {
+class ParkGridStateActivities extends React.Component {
 	//declaring state and new object
 	state ={
-		imageListing: []
+		parkArray: [],
+		isLoading: false,
 	}
 
 parkClick(event) {
@@ -43,9 +49,8 @@ fetchData(){
 			})
 		})
 	})
-}
-
- render(){
+}		   
+	 render() { 
 		 const { data, isLoading } = this.state; 
 		 
 		 	/*//testing
@@ -61,28 +66,22 @@ fetchData(){
 			 
 			if (newArray != null) {
         		return (
-				<Grid container  >
-					{newArray.map((use, i) =>
-				<GridList key={i} cellHeight={325} style={styles.gridList}>
-				<GridListTile cols={2} >
-					<img id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText} onClick={this.parkClick} />
-				<GridListTileBar title={use.images[0].title} subtitle={<span>{use.addresses[0].city}, {use.addresses[0].stateCode}</span>} />
-				</GridListTile>	
-				</GridList>
-					)}
-            		</Grid>
-        		)}
-    		
+            		 <GridList cellHeight={450} >
+                		{newArray.map((use, i) =>
+							<GridListTile key={i} cols={1} >
+								<img key={use.images[0].id} id={use.parkCode} src={use.images[0].url} alt={use.images[0].altText}  onClick={this.parkClick}/>
+								<GridListTileBar title={use.images[0].title} subtitle={<span>{use.addresses[0].city}, {use.addresses[0].stateCode}</span>} />
+					
+							</GridListTile>	
+							)}
+            		</GridList>
+        		);
+    		}
   		return (
  				<div>
-	  				{this.state.ParkGridHome}	
+	  				{this.state.ParkGridStateActivities}	
     			</div>
   				);
  			}
 		}
-export default ParkGridHome;
-const styles ={
-	gridList:{
-		paddingBottom:'0.5%',
-	},
-};
+		export default ParkGridStateActivities

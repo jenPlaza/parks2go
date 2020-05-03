@@ -4,17 +4,17 @@ import LargeImage from './largeImage'
 import ThumbnailGrid from './thumbnail-grid'
 
 //Material UI
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   container: {
 padding:'4%',
 },
 thumbnails: {
 marginTop:'-20%',
 },
-}));
+});
 
 let pCode = window.location.pathname;
 let newPC = pCode.split('/park/');
@@ -36,6 +36,7 @@ class ImageGallery extends React.Component {
 
 	//fetch Api data and map json results in a list format
 	fetchData(){
+		 //const { classes } = this.props;
 		fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 			.then(results =>{return results.json();}
 		).then(data =>{data.data.forEach((use, i)=>{	
@@ -61,29 +62,19 @@ class ImageGallery extends React.Component {
 const imageSelection = e.target.getAttribute('imgindex')
 	 this.setState({imgIndex: imageSelection})
  }
-	render(props) { 
-		const  {classes}  = this.props;
-		
+	render() { 
+		 const { classes } = this.props;
 		return(
-			<Grid container style={styles.container}> 
+			<Grid container className={classes.container}> 
 			<Grid item xs={12} >
 					{this.lgImage()}
 				</Grid>
-				<Grid item xs={12} style={styles.thumbnails}>
+				<Grid item xs={12} className={classes.thumbnails}>
 					<ThumbnailGrid thumbnails={this.state.imageArray} handleClick={this.handleClick}/>
 				</Grid>
 			</Grid>
 		)
 	}
 }
-export default ImageGallery
-//export default withStyles(useStyles)(ImageGallery);
+export default withStyles(styles)(ImageGallery);
 
-const styles ={
-	container: {
-padding:'4%',
-},
-thumbnails: {
-marginTop:'-20%',
-},
-}

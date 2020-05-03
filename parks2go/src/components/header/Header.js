@@ -6,7 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Link from '@material-ui/core/Link';
@@ -16,6 +15,10 @@ import logo from '../../images/parks2go_logo.png';
 
 //styles
 const useStyles = makeStyles(theme => ({
+	appBr:{
+		background: 'transparent', 
+		boxShadow: 'none'
+	},
   grow: {
     flexGrow: 1,
   },
@@ -28,11 +31,11 @@ const useStyles = makeStyles(theme => ({
 	},
   },
   logo: {
-    display: 'none',
+    display: 'block',
+	 width: '40%', 
+	 padding: '1%',
     [theme.breakpoints.up('md')]: {
-      display: 'block',
-		marginLeft: theme.spacing(-2),
-		width:'auto',
+		width:'30%',
     },
   },
   sectionDesktop: {
@@ -43,6 +46,12 @@ const useStyles = makeStyles(theme => ({
   },
 	largeIcon: {
 	transform: 'scale(1.5)',
+	[theme.breakpoints.up('md')]: {
+     transform: 'scale(2)',
+    },
+	[theme.breakpoints.up('lg')]: {
+     transform: 'scale(3)',
+    },
   },
   sectionMobile: {
     display: 'flex',
@@ -126,25 +135,17 @@ export default function PrimarySearchAppBar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Bryan Rogers</p>
+        <p>Jen Plaza</p>
       </MenuItem>
     </Menu>
   );
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={styles.appBr}>
+      <AppBar position="static" className={classes.appBr}>
         <Toolbar>
-          <IconButton 
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link className={classes.logo} href='/'>
-            <img src={logo} alt="Logo icon" style={styles.logo} />
+          <Link  href='/'>
+            <img src={logo} alt="Logo icon" className={classes.logo} />
           </Link>
 
           <div className={classes.grow} />
@@ -178,14 +179,4 @@ export default function PrimarySearchAppBar() {
       {renderMenu}
     </div>
   );
-}
-const styles ={
-	appBr:{
-		background: 'transparent', 
-		boxShadow: 'none'
-	},
-	logo:{
-		width: '25%', 
-		padding: '1%'
-	},
 }

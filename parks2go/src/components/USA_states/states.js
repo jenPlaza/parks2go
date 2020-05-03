@@ -8,25 +8,34 @@ import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(theme => ({
 ul:{
-		margin:'0',
-		padding:'0',
+	margin:'0',
+	padding:'0',
 	},
-	li:{
-		listStyleType:'none',
+li:{
+	listStyleType:'none',
 	},
-	link:{
-		color:'grey',
-		textDecoration:'none',
+link:{
+	color:theme.palette.primary.light,
+	textDecoration:'none',
 	},
-	box:{
-		columns:'4',
-		padding:'1%',
+box:{
+	columns:'3',
+	marginTop:'-10%',
+	padding:'1%',
+	paddingBottom:'5%',
+	marginBottom:'-6%',
+	[theme.breakpoints.up('md')]: {
+	    columns: '4 auto',
+	},
+	[theme.breakpoints.up('lg')]: {
+    	columns: '5 auto',
+	},
 	},
 }));
 
 export default function Map() {
 	  const classes = useStyles();
-//class States extends React.Component {
+
 	const stateArray = [
 				{ id:'AL', name: 'Alabama'},
 				{ id:'AK', name: 'Alaska'},

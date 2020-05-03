@@ -20,13 +20,13 @@ const theme = createMuiTheme({
   },
 	palette: {
     primary: {
-      light: '#B9B9B9',
-      main: '#000000',
+     light: '#919182',
+      main: '#2D2C23',
     },
     secondary: {
-      main: '#ea7a0f',
-	  light:"transparent",
-      contrastText: '#ffffff',
+	main: '#F09D51',
+	light:"transparent",
+     contrastText: '#ffffff',
     },
   },
 });
@@ -40,14 +40,13 @@ const useStyles = makeStyles(theme => ({
   },
 	headerRow:{
 		padding:'1%',
-		marginBottom:'-2px',
 		backgroundColor:'#272B2D',
 	},
 	footerRow:{
-		padding:'5%',
+		paddingTop:'3%',
+		paddingLeft:'3%',
+		paddingBottom:'3%',
 		backgroundColor:'#272B2D',
-		//backgroundColor:'#222628',
-		//backgroundColor:'#313638',
 	},
 }));
 

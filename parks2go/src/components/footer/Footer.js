@@ -10,59 +10,98 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from "@material-ui/core/Grid";
-import Facebook from '@material-ui/icons/Facebook';
-import Instagram from '@material-ui/icons/Instagram';
-import Twitter from '@material-ui/icons/Twitter';
+import GitHub from '@material-ui/icons/GitHub';
+import LinkedIn from '@material-ui/icons/LinkedIn';
 import Youtube from '@material-ui/icons/YouTube';
 
 //styles
 const useStyles = makeStyles(theme => ({
-  root:{				
+root:{				
 		height:'auto',
 		flexGrow: 1,
 		overflow:'hidden',
 		textAlign:'left',
 	},
-	h2:{
-		fontSize:'1.25em',
-		textAlign:'center',
-		marginTop:'-0.5%',
-		color:'white',
-	},
-	
-	a:{
-		color:theme.palette.secondary.main,
-		textDecoration:'none',
-	},
-	'a:visited':{
-		color:'grey',
-	},
-	states:{
-	fontSize:'1.25em',
-		textAlign:'center',
-		marginTop:'-0.5%',
-		marginBottom:'1%',
-		margin:'1%',
-		color:'white',
-	marginLeft:'-14%',
-	},
-	copyright:{
-		color:theme.palette.secondary.main,
-		marginTop:'-4%',
-	},
-	container:{
+container:{
 		marginTop:'-2%',
 		justifyContent:'center',
 	},
-	about:{
-		paddingRight:'4%',
-		color:'white',
+h2:{
+		fontSize:'1.5em',
+		textAlign:'left',
+		color:theme.palette.secondary.contrastText,
+		fontSize:'larger',
+	[theme.breakpoints.up('md')]: {
+    marginTop: '10%',
 	},
-	display:{
+	[theme.breakpoints.up('md')]: {
+    marginTop: '12%',
+	},
+	},
+a:{
+		color:theme.palette.secondary.main,
+		textDecoration:'none',
+	},
+about:{
+		paddingRight:'4%',
+		marginBottom:'5%',
+		color:theme.palette.secondary.contrastText,
+	},
+states:{
+	fontSize:'1.5em',
+		textAlign:'left',
+		color:theme.palette.secondary.contrastText,
+		//fontSize:'larger',
+		marginTop:'-1%',
+		marginBottom:'15%',
+	[theme.breakpoints.up('md')]: {
+    	marginTop: '3%',
+		marginBottom:'11.5%',
+		marginLeft:'1%',
+	},
+	},
+connect:{
+	fontSize:'1.5em',
+	textAlign:'left',
+	color:theme.palette.secondary.contrastText,
+	//fontSize:'larger',
+	marginTop:'5%',
+	[theme.breakpoints.up('md')]: {
+    marginTop: '30%',
+	marginLeft:'-10%',
+	},
+	},
+	div:{
+		//border:"1px solid red",
+		width:'60%',
+		justifyContent:'space-around',
+		marginLeft:'25%',
+		//border:'1px solid red'
+	},
+socialMedia:{
+	display:'inline-block',
+	transform: 'scale(1.5)',
+	marginTop:'10%',
+	marginLeft:'12%',
+	paddingRight:'1%',
+	color:theme.palette.secondary.contrastText,
+	[theme.breakpoints.up('md')]: {
 		display:'block',
-		paddingLeft:'35%',
-	color:'white',
-	}
+    	marginTop: '50%',
+		transform: 'scale(1.5)',
+	},
+	[theme.breakpoints.up('lg')]: {
+		display:'block',
+    	marginTop: '40%',
+	},
+	},
+copyright:{
+	color:theme.palette.secondary.main,
+	marginTop:'15%',
+	[theme.breakpoints.up('md')]: {
+    	marginTop: '5%',	
+	},
+	},
 }));
 
 const Copyright = () => {
@@ -89,20 +128,21 @@ export default function Footer() {
 
 	  <Grid item xs={12} md={3} className={classes.about}>
 		<h2 className={classes.h2}>About Us</h2>
-					<p><a className={classes.a} href='http://localhost:3000/About'>Parks2Go</a> ipsum dolor sit amet. The hotel, the casino. The Corleone Family wants to buy you out. I don’t like violence, Tom. I’m a businessman; blood is a big expense.</p>
+					<p><a className={classes.a} href='http://localhost:3000/About'>Parks2Go</a> is a free interactive guide to National State Parks around the country, created by Jen Plaza. Parks2Go originally began as a React student assignment...</p>
         </Grid>
 	  
         <Grid item xs={12} md={8}>
 			<h2 className={classes.states}>Parks2Go</h2>
-	  		<States />
+	  		<States style={{fontSize:'smaller'}}/>
 	  	</Grid>
 
-      <Grid item xs={12} md={1}>
-	  <h2 className={classes.h2}>Connect</h2>
-	  <Facebook className={classes.display}/>
-	  <Instagram className={classes.display}/>
-	  <Twitter className={classes.display}/>
-	  <Youtube className={classes.display} />
+      <Grid item xs={12} md={1} className={classes.connect2}>
+	  <h2 className={classes.connect}>Connect</h2>
+	  <div className={classes.div}>
+	  <Link color="inherit" href="https://github.com/jenPlaza" target='_blank'><GitHub className={classes.socialMedia}/></Link>
+	  <Link color="inherit" href="https://www.linkedin.com/in/jennifer-plaza-7a516a24/" target='_blank'><LinkedIn className={classes.socialMedia}/></Link>
+	  <Link color="inherit" href="https://www.youtube.com/channel/UCcdNksuPEwQ62VRNDxtwbzQ" target='_blank'><Youtube className={classes.socialMedia} /></Link>
+	  </div>
       </Grid>
 	    
 		<Grid item xs={12} md={12}><Copyright /></Grid>

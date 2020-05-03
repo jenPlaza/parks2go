@@ -3,59 +3,79 @@ import React from 'react';
 import ImgGallery from '../components/imgGallery/imgGallery'
 
 //Material UI
-import {withStyles} from '@material-ui/styles';
 import Grid from "@material-ui/core/Grid";
-import LinearProgress from '@material-ui/core/LinearProgress';
+import Inprogress from '../components/progress_indicator/inProgress'
+import {withStyles} from '@material-ui/styles';
 
 //Images & Icons
 import imgUrl from '../images/parkBackground.png';
 
-const useStyles = {
-	imgs:{
+const useStyles = theme => ({
+	container:{
+		backgroundImage: 'url(' + imgUrl + ')',	
+		marginBottom:'-3%',
+		paddingBottom:'12%',
+		paddingLeft:'2%',
+		justifyContent: 'space-around',
+	},
+		imgs:{
 		backgroundColor:'rgb(15,15,15,0.7)',
 		borderBottomLeftRadius:'30',
 		borderBottomRightRadius:'30',
 	},
-rightCol:{
+leftCol:{
 	color:'white',
 	justifyContent: 'space-around',
 	padding:'1%',
+	[theme.breakpoints.up('md')]: {
+    	marginTop: '3%',
+	},
 },
-	leftCol:{
+	rightCol:{
 	color:'white',
 		justifyContent: 'space-around',
 		paddingLeft:'3%',
 },
+	h1:{
+fontSize:'3rem',
+},
+	h3:{
+		marginTop:'-8%',
+		fontSize:'smaller',
+	},
 	moveUp:{
 		marginTop:'-4%',
 	},
 	activities:{
+		marginTop:'8%',
+		marginBottom:'12%',
+	},
+	list:{
 		columns: '3 auto',
-		marginBottom:'10%',
 		listStyleType:'none',
 	},
 	ul:{
 		margin:'0',
 		padding:'1%',
+		listStyleType:'none',
 	},
 	topics:{
 		columns: '3 auto',
 		listStyleType:'none',
-		marginBottom:'10%',		
+		marginBottom:'12%',		
 	},
 	description:{
-		marginBottom:'8%',
-		marginTop:'10%',
+		marginTop:'5%',
+		marginBottom:'5%',
 	},
 	details:{
-		marginBottom:'6%',
+		marginBottom:'5%',
 	},
 	directions:{
-		marginBottom:'6%',
+		marginBottom:'12%',
 	},
-};
+});
 
-//console.log(window.location.pathname);
 let pCode = window.location.pathname;
 let newPC = pCode.split('/park/');
  newPC.shift();
@@ -76,150 +96,110 @@ class Park extends React.Component {
 
 //fetch Api data and map json results in a list format
 fetchData(){
-	fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
-		.then(results =>{
-		return results.json();
-	}).then(data =>{
-		let mList = data.data.map((use, i)=>{
-			const  {classes}  = this.props;
-			return(
-				<Grid container style={styles.container}>
-	 		<Grid item xs={12} md={4}style={styles.rightCol}>
-				<Grid container>
-					<Grid item xs={12} style={styles.h2}>
-						<Grid container>
-	  						<Grid item xs={12} style={styles.h2}>
-								<h1>{use.name}</h1>
-								<h3 style={styles.moveUp}>{use.addresses[0].line1}, {use.addresses[0].stateCode}<br />
-								{use.addresses[0].city}, {use.addresses[0].stateCode} {use.addresses[0].postalCode}</h3>
-							</Grid> 
-	  					</Grid> 
-	   			</Grid> 
-{/*Park Description*/}
-	 			<Grid item xs={12} style={styles.description}>
-		  				<h2>Park Description</h2>
-	  					<p style={styles.moveUp}>{use.description}</p>
-	   			</Grid>
-{/*Park Details*/}
-				<Grid item xs={12} style={styles.details}>
-		  				<h2>Park Details</h2>
-					    <p style={styles.moveUp}><b>{use.entranceFees[0].description}</b><br />
-					    <b>Cost: </b>{use.entranceFees[0].cost}</p>
-	   			</Grid>
-{/*Park Directions*/}
-	 			<Grid item xs={12} style={styles.directions}>
-		  				<h2>Park Directions</h2>
-						<p style={styles.moveUp}>{use.directionsInfo}</p>
-	   			</Grid>
-			</Grid>  
-	   	</Grid>
-				
-				<Grid item xs={12} md={8} style={styles.leftCol}>
-{/*Park Images*/}	
-	  					<Grid item xs={12} style={styles.imgs}>
+			this.setState({ isLoading: true }, () => {
+				fetch(`https://developer.nps.gov/api/v1/parks?	${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
+				.then(results =>{
+				return results.json();
+				}).then(data => {this.setState({
+				isLoading:false,
+				data:data.data
+			})
+		})
+	})
+}
+render() { 
+	const { data, isLoading } = this.state; 
+	const  {classes}  = this.props;
+		 	/*//testing
+		 	console.log(isLoading)*/
+			
+		 if(isLoading){
+            return <Inprogress />
+          }
+			
+			let newArray = data;
+			 /*//testing
+			 console.log(newArray)*/
+			 
+			if (newArray != null) {
+        		return (
+				<Grid container className={classes.container}>	 		
+					{newArray.map((use, i) =>
+						<Grid item key={i} xs={12} md={4}className={classes.leftCol}>
+							<Grid container>
+								<Grid item xs={12} >
+									<Grid container>
+	  									<Grid item xs={12} >
+											<h1 className={classes.h1} >{use.name}</h1>
+												<h3 className={classes.h3}>{use.addresses[0].line1}, <br />
+												{use.addresses[0].city}, {use.addresses[0].stateCode} {use.addresses[0].postalCode}</h3>
+										</Grid> 
+	  								</Grid> 
+	   							</Grid>	 
+
+	 							<Grid item xs={12} className={classes.description}>
+		  							<h2>Park Description</h2>
+			 						<p className={classes.moveUp}>{use.description}</p> 
+	   							</Grid>
+
+								<Grid item xs={12} className={classes.details}>
+		  						<h2>Park Details</h2>
+					    		<p className={classes.moveUp}><b>{use.entranceFees[0].description}</b><br />
+					    		<b>Cost: </b>{use.entranceFees[0].cost}</p>	   
+	   							</Grid>
+
+	 							<Grid item xs={12} className={classes.directions}>
+		  							<h2>Park Directions</h2>
+									<p className={classes.moveUp}>{use.directionsInfo}</p> 
+	   							</Grid>
+							</Grid>  
+						</Grid>	
+					)}
+			 	{newArray.map((use, i) =>
+					<Grid key={i} item xs={12} md={8} className={classes.rightCol}>
+			  			<Grid item xs={12} className={classes.imgs}>
 							<ImgGallery />
 	   					</Grid> 
-	 				
-{/*Park Activities*/}
-					<Grid item xs={12} >
-		  				<h2>Park Activities</h2>
-	  					<Grid item xs={11} style={styles.activities}>
-							<ul style={styles.ul}>
-							{use.activities.map(activity =>{
-							return(
-							<li key={activity.id} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{activity.name}</li>	
-							)})}
-							</ul>
-	  					</Grid>
-	   				</Grid> 
-{/*Park Topics*/}
+						<Grid item xs={12} className={classes.activities}>
+		  					<h2>Park Activities</h2>
+	  						<Grid item xs={11} className={classes.list}>
+							<ul className={classes.ul}>
+								{use.activities.map(activity =>{
+									return(
+											<li key={activity.id} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{activity.name}</li>	
+										)})}
+								</ul>
+	  					  </Grid>
+	   				 </Grid> 
+
 	 				<Grid item xs={12} >
 		  				<h2>Park Topics</h2>
-						
-	  					<Grid item xs={11} style={styles.topics}>
-							<ul style={styles.ul}>
+	  					<Grid item xs={11} className={classes.topics}>
+							<ul className={classes.ul}>
 							{use.topics.map(topic =>{
 								return(
 								<li key={topic.id} style={{backgroundColor: 'rgb(15,15,15,0.5)'}}>{topic.name}</li>	
 								)})}
-								</ul>
+							</ul>
 	  					</Grid>
-						
 					</Grid> 
-{/*Weather*/}
+
 					<Grid item xs={11} >
 		  				<h2>Weather Information</h2>
 	  					<p>{use.weatherInfo}</p>
-	   				</Grid> 
-	   			</Grid> 
-	</Grid>  		
-			)
-		})
-
-		this.setState({park:mList});
-	})
-}
-	 render(props) { 
-		const  {classes}  = this.props;
+	   				</Grid>
+			  </Grid>
+			)}
+		</Grid>  
+		);
+	}
+ 
   return (
-	  <div style={styles.container}>
+	  <div className={classes.container} >
 	  {this.state.park}
 		</div>			
   	);
   }
 }
 
-export default Park
-//export default withStyles(useStyles)(Park);
-
-const styles ={
-	container:{
-		backgroundImage: 'url(' + imgUrl + ')',	
-		marginBottom:'-3%',
-		paddingBottom:'5%',
-		paddingLeft:'2%',
-		justifyContent: 'space-around',
-	},
-	imgs:{
-		backgroundColor:'rgb(15,15,15,0.7)',
-		borderBottomLeftRadius:'30',
-		borderBottomRightRadius:'30',
-	},
-rightCol:{
-	color:'white',
-	justifyContent: 'space-around',
-	padding:'1%',
-},
-	leftCol:{
-	color:'white',
-		justifyContent: 'space-around',
-		paddingLeft:'3%',
-},
-	moveUp:{
-		marginTop:'-4%',
-	},
-	activities:{
-		columns: '3 auto',
-		marginBottom:'10%',
-		listStyleType:'none',
-	},
-	ul:{
-		margin:'0',
-		padding:'1%',
-	},
-	topics:{
-		columns: '3 auto',
-		listStyleType:'none',
-		marginBottom:'10%',		
-	},
-	description:{
-		marginBottom:'8%',
-		marginTop:'10%',
-	},
-	details:{
-		marginBottom:'6%',
-	},
-	directions:{
-		marginBottom:'6%',
-	},
-}
+export default withStyles(useStyles)(Park);
