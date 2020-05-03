@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.85e6efc2.chunk.css",
+    "main.js": "/static/js/main.1b54665d.chunk.js",
+    "main.js.map": "/static/js/main.1b54665d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9ce70454.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9ce70454.js.map",
+    "static/js/2.abbfff1a.chunk.js": "/static/js/2.abbfff1a.chunk.js",
+    "static/js/2.abbfff1a.chunk.js.map": "/static/js/2.abbfff1a.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.269eebcee4821195c024bd12313ade17.js": "/precache-manifest.269eebcee4821195c024bd12313ade17.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.85e6efc2.chunk.css.map": "/static/css/main.85e6efc2.chunk.css.map",
+    "static/js/2.abbfff1a.chunk.js.LICENSE.txt": "/static/js/2.abbfff1a.chunk.js.LICENSE.txt",
+    "static/media/parkAbout.jpg": "/static/media/parkAbout.b54c646a.jpg",
+    "static/media/parkBackground.png": "/static/media/parkBackground.0231318e.png",
+    "static/media/parks2go_logo.png": "/static/media/parks2go_logo.d4221cbb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9ce70454.js",
+    "static/js/2.abbfff1a.chunk.js",
+    "static/css/main.85e6efc2.chunk.css",
+    "static/js/main.1b54665d.chunk.js"
+  ]
+}
