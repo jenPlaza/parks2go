@@ -1,7 +1,7 @@
 {
+  "homepage": "http://jenplaza.github.io/parks2go",
   "name": "parks2go",
   "version": "0.1.0",
-  "homepage": "https://jenplaza.github.io/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.11",
@@ -22,9 +22,9 @@
     "react-usa-map": "^1.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
