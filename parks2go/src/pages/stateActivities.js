@@ -77,7 +77,7 @@ activityClick(event) {
 	window.onclick= event => {
 		//console.log(event.target);
 		
-		const activityId = event.target.id;
+		var activityId = event.target.id;
 		//window.location.assign(`https://jenplaza.github.io/parks2go/stateParks/${targetId}/${activityId}`);
 		window.location.assign(`https://jenplaza.github.io/parks2go/stateParks/${activityId}`);
 	};
