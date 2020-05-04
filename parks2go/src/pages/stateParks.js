@@ -10,11 +10,11 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 let stCode = window.location.pathname;
 let newStC = stCode.split('/');
-
+console.log(newStC)
 var actCd = newStC.slice(3);
-
+console.log(actCd)
 var stateCd = newStC.slice(2,3);
-
+console.log(stateCd)
 const activityId = actCd;
 const targetId = stateCd;
 const endpoint = `statecode=${targetId}`;
