@@ -17,7 +17,7 @@ export default function Map() {
 	  var targetId = event.target.dataset.name;
 	  //window.location.assign(`https://jenplaza.github.io/parks2go/stateActivities/${targetId}`);
 		 //window.location.href=`parks2go/stateActivities/${targetId}`;
-		 setTimeout(function(){document.location.href = `/stateActivities/${targetId}`},500);
+		 setTimeout(function(){document.location.href = `parks2go/stateActivities/${targetId}`},500);
   };
 	
     return (
