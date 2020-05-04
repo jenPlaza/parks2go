@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
      transform: 'scale(2)',
     },
 	[theme.breakpoints.up('lg')]: {
-     transform: 'scale(3)',
+     transform: 'scale(2.5)',
     },
   },
   sectionMobile: {
