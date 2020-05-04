@@ -161,7 +161,16 @@ fetch(`https://developer.nps.gov/api/v1/parks?${endpoint}&api_key=YpbDDtsNwQRi13
 	  	<Grid item xs={12} className={classes.container}>
 	  	  		<div>
 	  				<ul className={classes.ul}>
-	  					{this.state.activityListings.map((v,i)=><li key={i} name={v.name} id={v.id} className={classes.li} onClick={this.activityClick}>{v.name}</li>)}
+	  					{this.state.activityListings.map((v,i)=>
+	  					
+  						stateParks/${targetId}/${activityId}`
+		  
+	  					<li key={i} name={v.name} id={v.id} >
+		  				<Link className={classes.li} href={"/parks2go/stateParks/"+targetId +v.id}>{v.name}</Link>
+		  
+		  				</li>)
+		 				
+		 				}
 	  				</ul>
 	   			</div>
 	  		</Grid> 
