@@ -17,11 +17,11 @@ export default function Routes() {
 		<div>
 				<Switch>
 	  				<Route exact path='/parks2go' component={Home} />
-					<Route exact path='/about' component={About} />
+					<Route exact path='/parks2go/about' component={About} />
 					{/*SB Added this as a "route param" demo*/}
-					<Route exact path='/stateActivities/:targetId' component={StateActivities} />
-	  				<Route exact path='/stateParks/:targetId/:activity' component={StateParks} />
-	  				<Route exact path='/park/:parkId' component={Park} />
+					<Route exact path='/parks2go/stateActivities/:targetId' component={StateActivities} />
+	  				<Route exact path='/parks2go/stateParks/:targetId/:activity' component={StateParks} />
+	  				<Route exact path='/parks2go/park/:parkId' component={Park} />
 	  
 	  				{/*<Route exact path='/stateActivities/:activity' component={StateActivities} />
 					<Route exact path='/parkGridStateActivities' component={ParkGridStateActivities} />
