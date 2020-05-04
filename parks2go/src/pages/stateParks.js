@@ -9,6 +9,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 let stCode = window.location.pathname;
+console.log(stCode)
 let newStC = stCode.split('/');
 console.log(newStC)
 var actCd = newStC.slice(3);
