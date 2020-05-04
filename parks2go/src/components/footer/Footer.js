@@ -125,7 +125,7 @@ export default function Footer() {
 
 	  <Grid item xs={12} md={3} className={classes.about}>
 		<h2 className={classes.h2}>About Us</h2>
-					<p><a className={classes.a} href='http://localhost:3000/About'>Parks2Go</a> is a free interactive guide to National State Parks around the country, created by Jen Plaza. Parks2Go originally began as a React student assignment...</p>
+					<p><a className={classes.a} href='/parks2go/about'>Parks2Go</a> is a free interactive guide to National State Parks around the country, created by Jen Plaza. Parks2Go originally began as a React student assignment...</p>
         </Grid>
 	  
         <Grid item xs={12} md={8}>
