@@ -118,8 +118,6 @@ render() {
           }
 			
 			let newArray = data;
-			 /*//testing
-			 console.log(newArray)*/
 			 
 			if (newArray != null) {
         		return (
