@@ -19,7 +19,8 @@ export default function Routes() {
 					<Route exact path= {process.env.PUBLIC_URL + '/about'} component={About} />
 					{/*SB Added this as a "route param" demo*/}
 					<Route exact path= {process.env.PUBLIC_URL + '/stateActivities/:targetId'} component={StateActivities} />
-	  				<Route exact path= {process.env.PUBLIC_URL + '/stateParks/:targetId/:activity'} component={StateParks} />
+	  {/*<Route exact path= {process.env.PUBLIC_URL + '/stateParks/:targetId/:activity'} component={StateParks} />*/}
+	  				<Route exact path= {process.env.PUBLIC_URL + '/stateParks/:activity'} component={StateParks} />
 	  				<Route exact path= {process.env.PUBLIC_URL + '/park/:parkId'} component={Park} />
 	  				
 				</Switch>
