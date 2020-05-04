@@ -52,7 +52,7 @@ fetchData(){
 }		   
 	 render() { 
 		 const { data, isLoading } = this.state; 
-		 	console.log(isLoading)*///testing:true
+		 	//console.log(isLoading)//testing:true
 			
 		 if(isLoading){
             return <Inprogress />
