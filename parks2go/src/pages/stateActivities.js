@@ -75,11 +75,12 @@ filterByActivity(current_value, i){
 
 activityClick(event) {
 	window.onclick= event => {
+				event.preventDefault();
+		console.log("tab");
 		//console.log(event.target);
 		
-		var activityId = event.target.id;
+		//var activityId = event.target.id;
 		//window.location.assign(`https://jenplaza.github.io/parks2go/stateParks/${targetId}/${activityId}`);
-		window.location.assign(`https://jenplaza.github.io/parks2go/stateParks/${activityId}`);
 	};
 }
 

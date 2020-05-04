@@ -54,7 +54,7 @@ filterByActivity(current_value, i){
 //fetching API
  fetchData(){
 	this.setState({ isLoading: true }, () => {
-		fetch(`https://developer.nps.gov/api/v1/parks?	${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
+fetch(`https://developer.nps.gov/api/v1/parks${endpoint}&api_key=YpbDDtsNwQRi13JXZXiN7DnEIusWnKQLsCZW11xq`)
 		.then(results =>{
 		return results.json();
 	}).then(data =>{this.setState({
