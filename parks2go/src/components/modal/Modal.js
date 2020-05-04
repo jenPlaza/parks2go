@@ -108,7 +108,6 @@ export default function SimpleModal() {
         open={open}
         onClose={handleClose}
         aria-labelledby="Send Us An Email"
-        //aria-describedby="simple-modal-description"
       >
          <form action="/parks2go">
 	  			<Grid container>
