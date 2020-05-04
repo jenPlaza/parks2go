@@ -20,7 +20,7 @@ export default function Routes() {
   return (
 		<Router>
 				<Switch>
-	  				<Route exact path= {process.env.PUBLIC_URL + '/parks2go'} component={Home} />
+	  				<Route exact path= {process.env.PUBLIC_URL + '/'} component={Home} />
 					<Route exact path= {process.env.PUBLIC_URL + '/parks2go/about'} component={About} />
 					{/*SB Added this as a "route param" demo*/}
 					<Route exact path= {process.env.PUBLIC_URL + '/parks2go/stateActivities/:targetId'} component={StateActivities} />
