@@ -12,9 +12,10 @@ let stCode = window.location.pathname;
 console.log(stCode)
 let newStC = stCode.split('/');
 console.log(newStC)
-var actCd = newStC.slice(3);
+var actCd = newStC.pop();
 console.log(actCd)
-var stateCd = newStC.slice(2,3);
+
+var stateCd = newStC.slice(3,4);
 console.log(stateCd)
 const activityId = actCd;
 const targetId = stateCd;
