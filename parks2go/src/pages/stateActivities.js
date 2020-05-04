@@ -75,7 +75,7 @@ filterByActivity(current_value, i){
 
 activityClick(event) {
 	window.onclick= event => {
-				event.preventDefault();
+				//event.preventDefault();
 		console.log("tab");
 		//console.log(event.target);
 		
