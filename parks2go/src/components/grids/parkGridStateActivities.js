@@ -25,7 +25,6 @@ class ParkGridStateActivities extends React.Component {
 
 parkClick(event) {
 	window.onclick= event => {
-		event.preventDefault();
 		//console.log(event.target);
 		
 		var parkId = event.target.id;
