@@ -9,14 +9,14 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 let stCode = window.location.pathname;
-console.log(stCode)
+//console.log(stCode)//testing: /parks2go/stateParks/TX/7CE6E935-F839-4FEC-A63E-052B1DEF39D2
 let newStC = stCode.split('/');
-console.log(newStC)
+//console.log(newStC) //testing: ["", "parks2go", "stateParks", "TX", "7CE6E935-F839-4FEC-A63E-052B1DEF39D2"]
 var actCd = newStC.pop();
-console.log(actCd)
+//console.log(actCd) //testing: 7CE6E935-F839-4FEC-A63E-052B1DEF39D2
 
 var stateCd = newStC.slice(3,4);
-console.log(stateCd)
+//console.log(stateCd) //testing: ["TX"]
 const activityId = actCd;
 const targetId = stateCd;
 const endpoint = `statecode=${targetId}`;

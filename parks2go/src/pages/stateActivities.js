@@ -92,9 +92,7 @@ helperFunction(_allActivities){
 			if(_allActivities[j].id === clean[i].id)
 				{
 					match = true;
-					
-					//testing
-					//console.log("Match",_allActivities[j]);
+					//console.log("Match",_allActivities[j]); //testing
 				}
 		}
 		if(!match ) clean.push(_allActivities[j])

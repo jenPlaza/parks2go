@@ -110,8 +110,8 @@ fetchData(){
 render() { 
 	const { data, isLoading } = this.state; 
 	const  {classes}  = this.props;
-		 	/*//testing
-		 	console.log(isLoading)*/
+		 	
+		 	/*console.log(isLoading)*///testing : true
 			
 		 if(isLoading){
             return <Inprogress />
