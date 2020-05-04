@@ -16,7 +16,7 @@ export default function Routes() {
   return (
 		<div>
 				<Switch>
-	  				<Route exact path='/' component={Home} />
+	  				<Route exact path='/parks2go' component={Home} />
 					<Route exact path='/about' component={About} />
 					{/*SB Added this as a "route param" demo*/}
 					<Route exact path='/stateActivities/:targetId' component={StateActivities} />
