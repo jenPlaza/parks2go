@@ -19,7 +19,6 @@ import Park from '../pages/park'
 export default function Routes() {
   return (
 		<Router>
-        <MuiThemeProvider>
 				<Switch>
 	  				<Route exact path='/parks2go' component={Home} />
 					<Route exact path='/parks2go/about' component={About} />
@@ -36,7 +35,6 @@ export default function Routes() {
 	  				<Route exact path='/park' component={Park} />*/}
 	  				
 				</Switch>
-			</MuiThemeProvider>
     </Router>
     );
 }
