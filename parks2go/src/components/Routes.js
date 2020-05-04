@@ -4,7 +4,6 @@ import {
     BrowserRouter as Router,
     Route,
     Switch,
-    hashHistory
 } from 'react-router-dom';
 //pages
 import Home from '../pages/index'
@@ -19,7 +18,7 @@ import Park from '../pages/park'
 //exporting class Routes
 export default function Routes() {
   return (
-		<Router history={hashHistory}>
+		<Router>
         <MuiThemeProvider>
 				<Switch>
 	  				<Route exact path='/parks2go' component={Home} />
