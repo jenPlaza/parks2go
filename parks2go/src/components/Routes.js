@@ -16,12 +16,12 @@ export default function Routes() {
   return (
 		<div>
 				<Switch>
-	  				<Route exact path='https://jenplaza.github.io/parks2go/' component={Home} />
-					<Route exact path='https://jenplaza.github.io/parks2go/about' component={About} />
+	  				<Route exact path='/' component={Home} />
+					<Route exact path='/about' component={About} />
 					{/*SB Added this as a "route param" demo*/}
-					<Route exact path='https://jenplaza.github.io/parks2go/stateActivities/:targetId' component={StateActivities} />
-	  				<Route exact path='https://jenplaza.github.io/parks2go/stateParks/:targetId/:activity' component={StateParks} />
-	  				<Route exact path='https://jenplaza.github.io/parks2go/park/:parkId' component={Park} />
+					<Route exact path='/stateActivities/:targetId' component={StateActivities} />
+	  				<Route exact path='/stateParks/:targetId/:activity' component={StateParks} />
+	  				<Route exact path='/park/:parkId' component={Park} />
 	  
 	  				{/*<Route exact path='/stateActivities/:activity' component={StateActivities} />
 					<Route exact path='/parkGridStateActivities' component={ParkGridStateActivities} />
