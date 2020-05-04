@@ -1,6 +1,11 @@
 import React from 'react';
 //React Router
-import{ Route, Switch } from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    hashHistory
+} from 'react-router-dom';
 //pages
 import Home from '../pages/index'
 import About from '../pages/about'
@@ -14,7 +19,8 @@ import Park from '../pages/park'
 //exporting class Routes
 export default function Routes() {
   return (
-		<div>
+		<Router history={hashHistory}>
+        <MuiThemeProvider>
 				<Switch>
 	  				<Route exact path='/parks2go' component={Home} />
 					<Route exact path='/parks2go/about' component={About} />
@@ -31,6 +37,7 @@ export default function Routes() {
 	  				<Route exact path='/park' component={Park} />*/}
 	  				
 				</Switch>
-			</div>
+			</MuiThemeProvider>
+    </Router>
     );
 }
