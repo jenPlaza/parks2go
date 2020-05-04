@@ -3,9 +3,6 @@ import React from 'react';
 import States from '../USA_states/states';
 import { makeStyles } from '@material-ui/core/styles';
 
-//images
-//import logo2 from '../../images/ptBtn3.png';
-
 //Material UI
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -109,7 +106,7 @@ const Copyright = () => {
   return (
     <Typography variant="body2" align="left" className={classes.copyright}>
       {'Copyright © '}
-      <Link color="inherit" href="/">
+      <Link color="inherit" href="/parks2go">
         Parks2Go
       </Link>{' '}
       {new Date().getFullYear()}

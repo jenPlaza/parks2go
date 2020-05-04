@@ -28,7 +28,7 @@ parkClick(event) {
 		//console.log(event.target);
 		
 		var parkId = event.target.id;
-		window.location.assign(`http://localhost:3000/park/${parkId}`);
+		window.location.assign(`https://jenplaza.github.io/parks2go/park/${parkId}`);
 	};
 } 
 

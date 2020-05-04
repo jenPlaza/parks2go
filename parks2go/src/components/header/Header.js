@@ -65,7 +65,7 @@ const Links = () => {
 	const classes = useStyles();
   return (
      <Typography display="block" align="center">
-      	<Link className={classes.typography} href="/">
+      	<Link className={classes.typography} href="/parks2go">
 	  		My account
 	  	</Link>
     </Typography>
@@ -144,7 +144,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBr}>
         <Toolbar>
-          <Link  href='/'>
+          <Link  href='/parks2go'>
             <img src={logo} alt="Logo icon" className={classes.logo} />
           </Link>
 

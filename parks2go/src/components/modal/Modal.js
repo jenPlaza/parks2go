@@ -110,7 +110,7 @@ export default function SimpleModal() {
         aria-labelledby="Send Us An Email"
         //aria-describedby="simple-modal-description"
       >
-         <form action="/">
+         <form action="/parks2go">
 	  			<Grid container>
 	  					<Grid item xs={12}>
 	  				<div className={classes.modalHeader}>

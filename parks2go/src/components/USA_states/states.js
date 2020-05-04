@@ -95,7 +95,7 @@ export default function Map() {
       		<Grid item xs={12}  className={classes.box}>
 				<ul className={classes.ul}>
 					{stateArray.map((e,i)=>{
-						return(<li key={i} className={classes.li} > <Link className={classes.link} href={"/stateActivities/"+e.id}>{e.name}</Link></li>)
+						return(<li key={i} className={classes.li} > <Link className={classes.link} href={"/parks2go/stateActivities/"+e.id}>{e.name}</Link></li>)
 							})}
 				</ul>
 	  		</Grid>
