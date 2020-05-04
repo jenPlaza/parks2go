@@ -23,9 +23,9 @@ export default function Routes() {
 	  				<Route exact path= {process.env.PUBLIC_URL + '/'} component={Home} />
 					<Route exact path= {process.env.PUBLIC_URL + '/about'} component={About} />
 					{/*SB Added this as a "route param" demo*/}
-					<Route exact path= {process.env.PUBLIC_URL + '/parks2go/stateActivities/:targetId'} component={StateActivities} />
-	  				<Route exact path= {process.env.PUBLIC_URL + '/parks2go/stateParks/:targetId/:activity'} component={StateParks} />
-	  				<Route exact path= {process.env.PUBLIC_URL + '/parks2go/park/:parkId'} component={Park} />
+					<Route exact path= {process.env.PUBLIC_URL + '/stateActivities/:targetId'} component={StateActivities} />
+	  				<Route exact path= {process.env.PUBLIC_URL + '/stateParks/:targetId/:activity'} component={StateParks} />
+	  				<Route exact path= {process.env.PUBLIC_URL + '/park/:parkId'} component={Park} />
 	  
 	  				{/*<Route exact path='/stateActivities/:activity' component={StateActivities} />
 					<Route exact path='/parkGridStateActivities' component={ParkGridStateActivities} />
