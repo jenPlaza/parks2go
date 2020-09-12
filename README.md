@@ -1,9 +1,68 @@
-Parks2Go is an app that provides information on State Parks around the country. The apps mission is to facilitate park information to make trips as seamless as possible. Adventurers will love the app as individual state parks can be narrowed down by outdoor activities. Users can choose from a variety of activities from kayaking to site seeing. These family friendly trails are the most beautiful of the country and are worth exploring.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The home page will provide users with an interactive USA map. Each state will pull information on the different state parks and will have the opportunity to filter by outdoor activities. Once a park is chosen the app will display Park ideas, Description, Images, Activities, Topics, and Directions. The user will also have the option to choose another park from a horizontal gallery that is displayed at the bottom of the page. The footer will include a link to the About Us page, links to the state parks page of each state and connect with social media icons.
+## Available Scripts
 
-Parks2Go acquires park information from different API pulls from https://nps.gov/. This information will fit into the different areas of the park text that is displayed for Park details, Description, Images, Activities, Topics, and Directions.
+In the project directory, you can run:
 
-For this application, I will develop 4 pages; Home, State Parks, Park, and About Us. I will be using React to create an interactive UI design. I will be dividing the application into different components for content, styling, functionality, and validation.
+### `yarn start`
 
-Parks2Go will be accessible for multiple device sizes. It will be designed with the mobile first approach and then work its way up in size. Once the website is running the site will be tested in multiple browsers, to provide the user with a seamless user experience. 
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `yarn build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
