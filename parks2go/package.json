@@ -1,4 +1,5 @@
 {
+  "homepage": "http://jenplaza.github.io/parks2go",
   "name": "parks2go",
   "version": "1.0.0",
   "description": "",
@@ -16,12 +17,19 @@
   },
   "devDependencies": {},
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "author": "",
+  "keywords": [
+    "parks",
+    "stateparks",
+    "park"
+  ],
+  "author": "jenPlaza",
   "license": "ISC",
   "browserslist": {
     "production": [
