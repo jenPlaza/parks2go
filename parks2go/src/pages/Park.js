@@ -151,7 +151,7 @@ class Park extends React.Component {
                 <Grid item xs={12} className={classes.details}>
                   <h2>Park Details</h2>
                   <p className={classes.moveUp}>
-                    {use.entranceFees ? (
+                    {use.entranceFees[0] ? (
                       <>
                         <b>{use.entranceFees[0].description}</b>
                         <br />
