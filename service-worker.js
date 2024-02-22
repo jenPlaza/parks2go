@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/parks2go/precache-manifest.3ad02d2554339725b75c8739fbca2195.js"
+  "/parks2go/precache-manifest.b21d16f9df970c740886f2ad611cfaeb.js"
 );
 
 self.addEventListener('message', (event) => {
