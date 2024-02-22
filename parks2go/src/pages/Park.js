@@ -125,7 +125,7 @@ class Park extends React.Component {
     let newArray = data;
 
     if (newArray != null) {
-      /*added a ternary operaor starting on line 154 fixing null entrance fee array using '<>.if..</> : else' */
+      /*added a ternary operator starting on line 154 fixing null entrance fee array using '<>.if..</> : else' */
       return (
         <Grid container className={classes.container}>
           {newArray.map((use, i) => (
@@ -135,6 +135,7 @@ class Park extends React.Component {
                   <Grid container>
                     <Grid item xs={12}>
                       <h1 className={classes.h1}>{use.name}</h1>
+                      <br />
                       <h3 className={classes.h3}>
                         {use.addresses[0].line1}, <br />
                         {use.addresses[0].city}, {use.addresses[0].stateCode}{' '}
@@ -151,7 +152,8 @@ class Park extends React.Component {
                 <Grid item xs={12} className={classes.details}>
                   <h2>Park Details</h2>
                   <p className={classes.moveUp}>
-                    {use.entranceFees[0] ? (
+                    {/*console.log(use.entranceFees): testing= empty array*/}
+                    {use.entranceFees ? (
                       <>
                         <b>{use.entranceFees[0].description}</b>
                         <br />
@@ -160,9 +162,8 @@ class Park extends React.Component {
                       </>
                     ) : (
                       <p>
-                        {' '}
                         Entrance fees are not available; please contact the
-                        state park for more informaion{' '}
+                        state park for more informaion
                       </p>
                     )}
                   </p>
