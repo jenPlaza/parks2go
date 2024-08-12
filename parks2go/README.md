@@ -6,4 +6,4 @@ Parks2Go acquires park information from different API pulls from https://nps.gov
 
 For this application, I will develop 4 pages; Home, State Parks, Park, and About Us. I will be using React to create an interactive UI design. I will be dividing the application into different components for content, styling, functionality, and validation.
 
-Parks2Go will be accessible for multiple device sizes. It will be designed with the mobile first approach and then work its way up in size. Once the website is running the site will be tested in multiple browsers, to provide the user with a seamless user experience. 
+Parks2Go will be accessible for multiple device sizes. It will be designed with the mobile first approach and then work its way up in size. Once the website is running the site will be tested in multiple browsers, to provide the user with a seamless user experience. Visit https://jenplaza.github.io/parks2go/
