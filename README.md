@@ -2,4 +2,4 @@ Parks2Go is a free interactive guide to National State Parks around the country,
 
 Parks2Go worked hard to build an app specifically focused on finding State National Parks. The app was designed to pull information on locations, descriptions, fees, activitities, topics, images, and weather.
 
-You can read full Project Synopsis, Design Process, and view wireframes at https://jennplaza.wordpress.com/portfolio/parks-2-go/
+You can read full Project Synopsis and Design Process at https://jennplaza.wordpress.com/portfolio/parks-2-go/ ; view High Fidelity Wireframes at https://jennplaza.wordpress.com/wp-content/uploads/2024/06/p2g_hiwiframe.png. 
